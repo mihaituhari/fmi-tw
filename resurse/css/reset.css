@@ -57,3 +57,13 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
+.mt-10,
+.my-10 {
+    margin-top: 10px;
+}
+
+.mb-10,
+.my-10 {
+    margin-bottom: 10px;
+}

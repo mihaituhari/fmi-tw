@@ -1,9 +1,9 @@
 :root {
     --primary-color: #050202;
-    --accent-color: #FF5B4F;
-    --secondary-color: #FF9C7A;
+    --accent-color: #ff5b4f;
+    --secondary-color: #ff9c7a;
     --light-color: #f5f1f1;
-    --lighter-color: #FFD97A;
+    --lighter-color: #ffd97a;
 
     --background-color: var(--light-color);
     --text-color: var(--primary-color);
@@ -31,7 +31,7 @@ body {
 
 header, footer {
     background-color: var(--lighter-color);
-    border: 1px solid #fff;
+    border: 1px solid #ffffff;
     border-radius: 15px;
     box-shadow: 0 0 10px 0 var(--lighter-color);
     padding: 5px 20px;
@@ -49,6 +49,10 @@ h1, h2, h3 {
     font-size: 1.2rem;
     font-weight: 700;
     line-height: 2rem;
+}
+
+small {
+    font-size: 0.9rem;
 }
 
 a:hover {
@@ -71,35 +75,7 @@ img {
     padding: 10px;
 }
 
-#link-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    background-color: var(--accent-color);
-    color: var(--light-color);
-    padding: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    border-radius: 50%;
-    box-shadow: 0 0 10px 0 var(--accent-color);
-    transition: all 0.5s ease;
-    text-decoration: none;
-    opacity: 0.7;
-    border: 3px solid #fff;
-}
-
-#link-top:hover {
-    opacity: 1;
-}
-
-#link-top:before {
-    content: "ᐃ";
-    line-height: 30px;
-}
-
+/** Grid Layout **/
 .grid-container {
     margin: 20px 0;
     display: grid;
@@ -121,15 +97,122 @@ img {
     border-radius: 15px;
 }
 
-.zone-1-banner { grid-area: a; }
-.zone-2-table { grid-area: g; }
-.zone-3-calendar { grid-area: f; }
-.zone-4-announcements { grid-area: h; }
-.zone-5-users-online { grid-area: b; }
-.zone-6-user-stats { grid-area: c; }
-.zone-7-site-stats { grid-area: e; }
-.zone-8-news { grid-area: i; }
+.zone-1-banner {
+    grid-area: a;
+}
 
+.zone-2-table {
+    grid-area: g;
+}
+
+.zone-3-calendar {
+    grid-area: f;
+}
+
+.zone-4-announcements {
+    grid-area: h;
+}
+
+.zone-5-users-online {
+    grid-area: b;
+}
+
+.zone-6-user-stats {
+    grid-area: c;
+}
+
+.zone-7-site-stats {
+    grid-area: e;
+}
+
+.zone-8-news {
+    grid-area: i;
+}
+
+
+#link-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background-color: var(--accent-color);
+    color: var(--light-color);
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 0 var(--accent-color);
+    transition: all 0.5s ease;
+    text-decoration: none;
+    opacity: 0.7;
+    border: 3px solid #ffffff;
+}
+
+/** Link to top **/
+#link-top:hover {
+    opacity: 1;
+}
+
+#link-top:before {
+    content: "ᐃ";
+    line-height: 30px;
+}
+
+
+/** Table **/
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    margin: 10px;
+    border-collapse: separate;
+    border-spacing: 2px;
+}
+
+table caption {
+    caption-side: bottom;
+}
+
+table td {
+    padding: 5px 10px;
+}
+
+table thead tr {
+    background-color: var(--accent-color);
+    color: var(--light-color);
+}
+
+table tfoot tr {
+    background-color: var(--lighter-color);
+    color: var(--primary-color);
+}
+
+table thead tr th,
+table tfoot tr th{
+    padding: 10px;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: var(--accent-color);
+}
+
+table tbody tr:nth-child(odd) {
+    background-color: var(--secondary-color);
+}
+
+table tbody tr:not(:hover) {
+    transition: background-color 0.5s ease;
+}
+
+table tbody tr:hover {
+    background-color: var(--lighter-color);
+}
+
+/** Responsive Design **/
 @media only screen and (min-width: 801px) and (max-width: 1024px) {
     body {
         font-size: 0.9rem;
@@ -172,5 +255,13 @@ img {
         "i";
         grid-template-columns: 1fr;
         grid-gap: 5px;
+    }
+
+    .table-container {
+        overflow-x: scroll;
+    }
+
+    table {
+        border-spacing: 0;
     }
 }
