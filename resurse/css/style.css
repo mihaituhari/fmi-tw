@@ -212,6 +212,48 @@ table tbody tr:hover {
     background-color: var(--lighter-color);
 }
 
+/** Various **/
+section {
+    margin: 20px 0;
+}
+
+.iframe-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-top: 10px;
+}
+
+.iframe-container iframe {
+    border: 3px solid var(--accent-color);
+}
+
+.iframe-buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-rounded {
+    width: 200px;
+    text-align: center;
+    background-color: var(--lighter-color);
+    border-top-right-radius: 30px;
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 500;
+    padding: 10px 0;
+    box-shadow: inset 0 0 10px #000000;
+    transition: all 0.5s ease;
+    border-left: 5px solid var(--accent-color);
+    margin-top: -5px;
+}
+.btn-rounded:hover,
+.btn-rounded.active {
+    border-left: 5px solid var(--lighter-color);
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
 /** Responsive Design **/
 @media only screen and (min-width: 801px) and (max-width: 1024px) {
     body {
