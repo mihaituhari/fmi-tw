@@ -24,15 +24,15 @@
 </head>
 <body>
 <header>
-    <h1>Eventz!</h1>
+    <h1 id="intro">Eventz!</h1>
     <nav>
         <ul>
             <li>
                 <a href="#home">Acasă</a>
                 <ul>
-                    <li><a href="#top">Top evenimente</a></li>
-                    <li><a href="#top">Top evenimente</a></li>
+                    <li><a href="#top-events">Top evenimente</a></li>
                     <li><a href="#dub-videos">DUB videos</a></li>
+                    <li><a href="#faq">Întrebări frecvente</a></li>
                     <li><a href="#suport">Suport & diverse</a></li>
                 </ul>
             </li>
@@ -52,7 +52,7 @@
     <section id="home">
         <h2>Eventz!</h2>
         <p>
-            <strong>Descoperă</strong> <b>concerte</b> excepționale, <b>spectacole</b> impresionante și bucură-te de <b>muzică</b> de calitate superioară.<br>
+            <strong>Descoperă</strong> <b>concerte</b> <em>excepționale</em>, <b>spectacole</b> <em>impresionante</em> și bucură-te de <b>muzică</b> de calitate superioară.<br>
             <q>Muzica dă suflet universului, aripi minții, zbor imaginației și viață tuturor lucrurilor</q>.
         </p>
         <ul>
@@ -62,7 +62,7 @@
             <li>Teatru adulti</li>
         </ul>
 
-        <section id="top">
+        <section id="top-events">
             <h3>Top evenimente</h3>
             <p>Cele mai cautate evenimente</p>
             <ol>
@@ -70,26 +70,7 @@
                 <li>Concert opera</li>
             </ol>
         </section>
-        <section id="concerte">
-            <h3>Concerte 2</h3>
-            <blockquote>Hai la distractie!</blockquote>
-            <dl>
-                <dt>Rap</dt>
-                <dd>Definition 1</dd>
-                <dt>Rock</dt>
-                <dd>Definition 2</dd>
-            </dl>
-        </section>
     </section>
-    <figure>
-        <picture>
-            <source media="(max-width: 799px)" srcset="resurse/images/banner-small.jpg">
-            <source media="(min-width: 800px) and (max-width: 1799px)" srcset="resurse/images/banner-mid.jpg">
-            <source media="(min-width: 1800px)" srcset="resurse/images/banner-big.jpg">
-            <img src="resurse/images/banner-big.jpg.jpg" alt="Top concerte!">
-        </picture>
-        <figcaption>Top concerte</figcaption>
-    </figure>
 
     <section id="dub-videos">
         <h2>DUB Techno videos</h2>
@@ -101,37 +82,74 @@
         <iframe width="560" height="315" name="iframe_video" src="https://www.youtube.com/embed/NRoZQBueXeI?si=Fw481yiNueAD1UkJ" title="YouTube video player" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </section>
 
+    <section id="faq">
+        <h2>Întrebări frecvente</h2>
+
+        <details>
+            <summary>Cum pot cumpăra bilete?</summary>
+            <p>Puteți cumpăra bilete direct de pe site-ul nostru. Accesați secțiunea "Evenimente" și selectați evenimentul dorit.</p>
+        </details>
+
+        <details>
+            <summary>Cum pot contacta suportul?</summary>
+            <p>Puteți contacta suportul nostru prin email la adresa suport@eventz.ro sau prin telefon la numărul +1234567890.</p>
+        </details>
+
+        <details>
+            <summary>Unde pot vedea evenimentele viitoare?</summary>
+            <p>Evenimentele viitoare pot fi vizualizate în secțiunea "Evenimente" a site-ului nostru.</p>
+        </details>
+    </section>
+
     <section id="suport">
         <h2>Suport & diverse</h2>
         <ul>
             <li><a href="https://anpc.ro/" target="_blank">ANPC</a></li>
             <li><a href="resurse/images/banner-big.jpg" download>Descarcă banner</a></li>
         </ul>
+
+        <section>
+            <h3>Calcul preț bilet cu discount</h3>
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mi>p</mi>
+                <mo>'</mo>
+                <mo>=</mo>
+                <mi>p</mi>
+                <mo>-</mo>
+                <mo>(</mo>
+                <mi>p</mi>
+                <mo>*</mo>
+                <mi>d</mi>
+                <mo>/</mo>
+                <mn>100</mn>
+                <mo>)</mo>
+            </math>
+            <br>
+            <small><code>p'=prețul final</code>, <code>p=prețul inițial</code>, <code>d=discount</code></small>
+        </section>
     </section>
 
-    <section id="report">
-        <h2>Suport & diverse</h2>
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
-            <mi>e</mi>
-            <mo>=</mo>
-            <mi>c</mi>
-            <mo>+</mo>
-            <mi>t</mi>
-        </math>
-        <br>
-        <small><code>e=evenimente</code>, <code>c=concerte</code>, <code>t=teatru</code></small>
-    </section>
+    <figure>
+        <picture>
+            <source media="(max-width: 799px)" srcset="resurse/images/banner-small.jpg">
+            <source media="(min-width: 800px) and (max-width: 1799px)" srcset="resurse/images/banner-mid.jpg">
+            <source media="(min-width: 1800px)" srcset="resurse/images/banner-big.jpg">
+            <img src="resurse/images/banner-big.jpg.jpg" alt="Top concerte!">
+        </picture>
+        <figcaption>Top concerte</figcaption>
+    </figure>
 </main>
 
 <footer>
     <hr>
     <a href="index.html#home">Acasă</a>
+    <a href="#intro">Înapoi la început</a>
     <address>
         <p>Informații de contact:</p>
         <p>Telefon: <a href="tel:+1234567890">+1234567890</a></p>
         <p>Adresă: <a href="https://www.google.com/maps/place/Facultatea+de+Matematica+si+Informatica" target="_blank">Facultatea de Matematica si Informatica</a></p>
         <p>Email: <a href="mailto:email@example.com">email@example.com</a></p>
-        <p>Chat: <a href="skype:live:.cid.1234567890abcdef?chat">Chat Skype</a></p>
+        <p>Chat: <a href="https://wa.me/1234567890">Whatsapp</a></p>
     </address>
 
     <small>&copy; <time datetime="2024-03-27">26 Februarie 2024</time> Eventz! Toate drepturile rezervate.</small>
