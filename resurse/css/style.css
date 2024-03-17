@@ -217,6 +217,10 @@ section {
     margin: 20px 0;
 }
 
+math mi {
+    color: var(--accent-color);
+}
+
 .iframe-container {
     display: flex;
     flex-direction: row;
