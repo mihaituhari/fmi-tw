@@ -19,49 +19,13 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+    <link href="resurse/reset.css" rel="stylesheet" type="text/css">
     <link href="resurse/style.css" rel="stylesheet" type="text/css">
     <script src="resurse/scripts.js"></script>
-
-    <style>
-        :root {
-            --primary-color: #050202;
-            --accent-color: #FF5B4F;
-            --secondary-color: #FF9C7A;
-            --light-color: #fdf7f7;
-            --lighter-color: #FFD97A;
-
-            --background-color: var(--light-color);
-            --text-color: var(--primary-color);
-            --border-color: var(--accent-color);
-            --highlight-color: var(--secondary-color);
-            --hover-color: var(--lighter-color);
-        }
-
-        body {
-            background-color: var(--background-color);
-            color: var(--text-color);
-        }
-
-        h1, h2, h3 {
-            border-bottom: 2px solid var(--border-color);
-        }
-
-        a:hover {
-            background-color: var(--hover-color);
-        }
-
-        .highlight {
-            background-color: var(--highlight-color);
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        .bordered {
-            border: 2px solid var(--border-color);
-            padding: 10px;
-            border-radius: 5px;
-        }
-    </style>
 </head>
 <body>
 <header>
@@ -90,6 +54,49 @@
     </nav>
 </header>
 <main>
+    <div class="grid-container">
+        <div class="zone-1-banner">
+            <figure class="text-center">
+                <picture>
+                    <source media="(max-width: 799px)" srcset="resurse/images/banner-small.jpg">
+                    <source media="(min-width: 800px) and (max-width: 1799px)" srcset="resurse/images/banner-mid.jpg">
+                    <source media="(min-width: 1800px)" srcset="resurse/images/banner-big.jpg">
+                    <img src="resurse/images/banner-big.jpg.jpg" alt="Top concerte!">
+                </picture>
+                <figcaption>Top concerte</figcaption>
+            </figure>
+        </div>
+        <div class="zone-2-table">
+            <h2>Tabel</h2>
+            <q>Nam mauris augue, condimentum tincidunt odio ut, tempor pretium lectus. Donec tempor feugiat justo et dignissim. Maecenas pretium libero diam, sit amet aliquet enim dictum volutpat. Vivamus rhoncus ex lorem, non accumsan leo fermentum vitae. Etiam vehicula nulla id felis euismod, a suscipit dolor posuere. Vivamus rhoncus, nulla non cursus venenatis, massa leo bibendum tortor, non consequat enim libero eget nunc. Nullam porttitor, quam in auctor laoreet, purus nunc rutrum erat, sed consectetur augue diam et turpis.</q>
+        </div>
+        <div class="zone-3-calendar">
+            <h2>Calendar</h2>
+            <q>Nam mauris augue, condimentum tincidunt odio ut, tempor pretium lectus. Donec tempor feugiat justo et dignissim. Maecenas pretium libero diam, sit amet aliquet enim dictum volutpat. Vivamus rhoncus ex lorem, non accumsan leo fermentum vitae. Etiam vehicula nulla id felis euismod, a suscipit dolor posuere. Vivamus rhoncus, nulla non cursus venenatis, massa leo bibendum tortor, non consequat enim libero eget nunc. Nullam porttitor, quam in auctor laoreet, purus nunc rutrum erat, sed consectetur augue diam et turpis.</q>
+        </div>
+        <div class="zone-4-announcements">
+            <h2>Anunturi</h2>
+            <q>Nam mauris augue, condimentum tincidunt odio ut, tempor pretium lectus. Donec tempor feugiat justo et dignissim. Maecenas pretium libero diam, sit amet aliquet enim dictum volutpat. Vivamus rhoncus ex lorem, non accumsan leo fermentum vitae. Etiam vehicula nulla id felis euismod, a suscipit dolor posuere. Vivamus rhoncus, nulla non cursus venenatis, massa leo bibendum tortor, non consequat enim libero eget nunc. Nullam porttitor, quam in auctor laoreet, purus nunc rutrum erat, sed consectetur augue diam et turpis.</q>
+        </div>
+        <div class="zone-5-users-online">
+            <h2>Useri online</h2>
+            <q>Nam mauris augue, condimentum tincidunt odio ut, tempor pretium lectus. Donec tempor feugiat justo et dignissim. Maecenas pretium libero diam, sit amet aliquet enim dictum volutpat. Vivamus rhoncus ex lorem, non accumsan leo fermentum vitae. Etiam vehicula nulla id felis euismod, a suscipit dolor posuere. Vivamus rhoncus, nulla non cursus venenatis, massa leo bibendum tortor, non consequat enim libero eget nunc. Nullam porttitor, quam in auctor laoreet, purus nunc rutrum erat, sed consectetur augue diam et turpis.</q>
+        </div>
+        <div class="zone-6-user-stats">
+            <h2>Date utilizatori &amp; statistici</h2>
+            <q>Nam mauris augue, condimentum tincidunt odio ut, tempor pretium lectus. Donec tempor feugiat justo et dignissim. Maecenas pretium libero diam, sit amet aliquet enim dictum volutpat. Vivamus rhoncus ex lorem, non accumsan leo fermentum vitae. Etiam vehicula nulla id felis euismod, a suscipit dolor posuere. Vivamus rhoncus, nulla non cursus venenatis, massa leo bibendum tortor, non consequat enim libero eget nunc. Nullam porttitor, quam in auctor laoreet, purus nunc rutrum erat, sed consectetur augue diam et turpis.</q>
+        </div>
+        <div class="zone-7-site-stats">
+            <h2>Date site &amp; server</h2>
+            <q>Nam mauris augue, condimentum tincidunt odio ut, tempor pretium lectus. Donec tempor feugiat justo et dignissim. Maecenas pretium libero diam, sit amet aliquet enim dictum volutpat. Vivamus rhoncus ex lorem, non accumsan leo fermentum vitae. Etiam vehicula nulla id felis euismod, a suscipit dolor posuere. Vivamus rhoncus, nulla non cursus venenatis, massa leo bibendum tortor, non consequat enim libero eget nunc. Nullam porttitor, quam in auctor laoreet, purus nunc rutrum erat, sed consectetur augue diam et turpis.</q>
+        </div>
+        <div class="zone-8-news">
+            <h2>Noutati</h2>
+            <q>Nam mauris augue, condimentum tincidunt odio ut, tempor pretium lectus. Donec tempor feugiat justo et dignissim. Maecenas pretium libero diam, sit amet aliquet enim dictum volutpat. Vivamus rhoncus ex lorem, non accumsan leo fermentum vitae. Etiam vehicula nulla id felis euismod, a suscipit dolor posuere. Vivamus rhoncus, nulla non cursus venenatis, massa leo bibendum tortor, non consequat enim libero eget nunc. Nullam porttitor, quam in auctor laoreet, purus nunc rutrum erat, sed consectetur augue diam et turpis.</q>
+        </div>
+    </div>
+
+
     <section id="home">
         <h2>Eventz!</h2>
         <p>
@@ -120,7 +127,7 @@
             <li><a href="https://www.youtube.com/embed/BwPSgvpqqfw?si=iNgoKRn0rcn12XLS" target="iframe_video">DUB 2</a></li>
         </ul>
 
-        <iframe width="560" height="315" name="iframe_video" src="https://www.youtube.com/embed/NRoZQBueXeI?si=Fw481yiNueAD1UkJ" title="YouTube video player" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe width="560" height="315" name="iframe_video" src="https://www.youtube.com/embed/NRoZQBueXeI?si=Fw481yiNueAD1UkJ" title="YouTube video player" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </section>
 
     <section id="faq">
@@ -169,22 +176,13 @@
             <small><code>p'=prețul final</code>, <code>p=prețul inițial</code>, <code>d=discount</code></small>
         </section>
     </section>
-
-    <figure>
-        <picture>
-            <source media="(max-width: 799px)" srcset="resurse/images/banner-small.jpg">
-            <source media="(min-width: 800px) and (max-width: 1799px)" srcset="resurse/images/banner-mid.jpg">
-            <source media="(min-width: 1800px)" srcset="resurse/images/banner-big.jpg">
-            <img src="resurse/images/banner-big.jpg.jpg" alt="Top concerte!">
-        </picture>
-        <figcaption>Top concerte</figcaption>
-    </figure>
 </main>
 
 <footer>
-    <hr>
-    <a href="index.html#home">Acasă</a>
-    <a href="#intro">Înapoi la început</a>
+    <div>
+        <a href="index.html#home">Acasă</a>
+        <a href="#intro">Mergi sus ^</a>
+    </div>
     <address>
         <p>Informații de contact:</p>
         <p>Telefon: <a href="tel:+1234567890">+1234567890</a></p>
