@@ -21,6 +21,47 @@
 
     <link href="resurse/style.css" rel="stylesheet" type="text/css">
     <script src="resurse/scripts.js"></script>
+
+    <style>
+        :root {
+            --primary-color: #050202;
+            --accent-color: #FF5B4F;
+            --secondary-color: #FF9C7A;
+            --light-color: #fdf7f7;
+            --lighter-color: #FFD97A;
+
+            --background-color: var(--light-color);
+            --text-color: var(--primary-color);
+            --border-color: var(--accent-color);
+            --highlight-color: var(--secondary-color);
+            --hover-color: var(--lighter-color);
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        h1, h2, h3 {
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        a:hover {
+            background-color: var(--hover-color);
+        }
+
+        .highlight {
+            background-color: var(--highlight-color);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .bordered {
+            border: 2px solid var(--border-color);
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
 <header>

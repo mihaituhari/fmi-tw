@@ -64,3 +64,14 @@ Plusuri
 
 Minusuri
 - Pozele de la evenimente sunt taiate in preview
+
+## Schema cromatică
+*Nuanțe de Roșu și Portocaliu*
+
+Aceste culori sunt energice și pot stimula entuziasmul vizitatorilor.
+
+Roșul este adesea asociat cu pasiunea și acțiunea, ceea ce poate încuraja utilizatorii
+să cumpere bilete. 
+
+Portocaliul, pe de altă parte, este perceput ca fiind prietenos și accesibil, contribuind 
+la o atmosferă primitoare.
