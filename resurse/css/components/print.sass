@@ -1,0 +1,64 @@
+@import "variables"
+
+@media print
+  // 1. Banner - afisare in josul primei pagini
+  footer .banner
+    position: absolute
+    bottom: 0
+    left: 15%
+    width: 70%
+    border: 4px inset black
+
+  // 2. Ascunderea elementelor media
+  img, video, iframe, #link-top
+    display: none
+
+  // 3. Gridul paginii sa fie block
+  .grid-container
+    display: block
+    div + div
+      margin-top: 20px
+
+  // 4. Linkurile sa fie normale
+  a
+    color: #000 !important
+    text-decoration: none !important
+
+  // 5. Headingul de nivel 1 și meniul
+  header
+    text-align: center
+    page-break-after: always
+
+  nav ul
+    display: flex
+    flex-direction: column
+
+    li a
+      justify-content: center
+
+  // Page break inainte de footer
+  footer
+    page-break-before: always
+
+  // 6. Watermark
+  body::after
+    content: "Mihai\ATuhari" // \A este new line pentru `content`
+    white-space: pre
+    position: fixed
+    right: 0
+    bottom: 0
+    width: 4cm
+    height: 1cm
+    border: 3px solid black
+    border-radius: 5px
+    text-align: center
+    font-weight: bold
+    opacity: 0.4
+
+  // 7. Margini pentru pagini
+  @page :left
+    margin: 0 1cm 0 3cm
+
+  @page :right
+    margin: 0 3cm 0 1cm
+
