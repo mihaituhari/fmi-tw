@@ -60,7 +60,22 @@ app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
 
+// Initializare erori
 initErori();
+
+// Creare foldere temporare
+let createFolders = ['temp'];
+
+createFolders.forEach((folder) => {
+  let folderPath = path.join(__dirname, folder);
+
+  if (!fs.existsSync(folderPath)) {
+    fs.mkdirSync(folderPath);
+    console.log(`Folderul ${folder} a fost creat.`);
+  } else {
+    console.log(`Folderul ${folder} există deja.`);
+  }
+});
 
 console.log('Directory of this file [__dirname]: ' + __dirname);
 console.log('File path [__filename]: ' + __filename);
