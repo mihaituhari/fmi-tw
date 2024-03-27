@@ -1,31 +1,8 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
     <title>Eventz</title>
-    <meta content="ro" name="language">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="Mihai Tuhari">
-    <meta name="keywords" content="evenimente, concerte, concert, teatru, spectacol, muzica">
-    <meta name="description" content="Eventz! Descopera cele mai noi evenimente din orasul tau: concerte, spectacole si multe altele..">
-    <meta name="title" content="Eventz!">
-
-    <meta content="index,follow" name="robots">
-
-    <link rel="apple-touch-icon" sizes="180x180" href="resurse/ico/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="resurse/ico/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="resurse/ico/favicon-16x16.png">
-    <link rel="manifest" href="resurse/ico/site.webmanifest">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
-
-    <link href="resurse/css/style.css" rel="stylesheet" type="text/css">
-    <script src="resurse/js/scripts.js"></script>
+    <% include('../fragmente/meta.ejs') %>
 </head>
 <body>
 <header>
@@ -82,10 +59,10 @@
         <div class="zone-1-banner">
             <figure class="text-center">
                 <picture>
-                    <source media="(max-width: 799px)" srcset="resurse/images/banner-small.jpg">
-                    <source media="(min-width: 800px) and (max-width: 1799px)" srcset="resurse/images/banner-mid.jpg">
-                    <source media="(min-width: 1800px)" srcset="resurse/images/banner-big.jpg">
-                    <img src="resurse/images/banner-big.jpg.jpg" alt="Top concerte!">
+                    <source media="(max-width: 799px)" srcset="/resurse/images/banner-small.jpg">
+                    <source media="(min-width: 800px) and (max-width: 1799px)" srcset="/resurse/images/banner-mid.jpg">
+                    <source media="(min-width: 1800px)" srcset="/resurse/images/banner-big.jpg">
+                    <img src="/resurse/images/banner-big.jpg.jpg" alt="Top concerte!">
                 </picture>
                 <figcaption>Top concerte</figcaption>
             </figure>
@@ -236,7 +213,7 @@
         <h2>Suport & diverse</h2>
         <ul>
             <li><a href="https://anpc.ro/" target="_blank">ANPC</a></li>
-            <li><a href="resurse/images/banner-big.jpg" download>Descarcă banner</a></li>
+            <li><a href="/resurse/images/banner-big.jpg" download>Descarcă banner</a></li>
         </ul>
 
         <section>
@@ -261,25 +238,7 @@
     </section>
 </main>
 
-<footer>
-    <div class="banner">Acesta este un proiect scolar</div>
-    <section>
-        <div>
-            <a href="index.html#home">Acasă</a>
-        </div>
-        <address>
-            <p>Informații de contact:</p>
-            <p><i class="fa fa-phone"></i> Telefon: <a href="tel:+1234567890">+1234567890</a></p>
-            <p><i class="fa fa-map-marked"></i> Adresă: <a href="https://www.google.com/maps/place/Facultatea+de+Matematica+si+Informatica" target="_blank">Facultatea de Matematica si Informatica</a></p>
-            <p><i class="fa fa-envelope"></i> Email: <a href="mailto:email@example.com">email@example.com</a></p>
-            <p><i class="fa fa-pen"></i> Chat: <a href="https://wa.me/1234567890">Whatsapp</a></p>
-        </address>
-
-        <small>&copy; <time datetime="2024-03-27">26 Februarie 2024</time> Eventz! Toate drepturile rezervate.</small>
-    </section>
-
-    <a id="link-top" title="Mergi sus" href="#intro"></a>
-</footer>
+<% include('../fragmente/footer.ejs') %>
 
 </body>
 </html>
