@@ -1,0 +1,411 @@
+$primary-color: #050202
+$accent-color: #ff5b4f
+$secondary-color: #ff9c7a
+$light-color: #f5f1f1
+$lighter-color: #ffd97a
+
+$transition-duration: 0.5s
+
+$breakpoint-small: 1024px
+$breakpoint-medium: 1260px
+
+// Define SASS mixin for transition
+=transition-effect($property, $duration, $timing-function)
+  transition: $property $duration $timing-function
+
+html, body
+  width: 100%
+  margin: 0
+  padding: 0
+  font-size: 16px
+  font-family: "Lato", sans-serif
+  font-style: normal
+  box-sizing: border-box
+
+body
+  color: $primary-color
+  transition: font-size 0.5s ease
+  padding: 20px
+
+header, footer
+  background-color: $lighter-color
+  border: 1px solid #ffffff
+  border-radius: 15px
+  box-shadow: 0 0 10px 0 $lighter-color
+  padding: 5px 20px
+
+footer
+  padding: 20px
+  margin-top: 20px
+  display: flex
+  justify-content: space-between
+
+h1, h2, h3
+  border-bottom: 2px solid $accent-color
+  font-size: 1.2rem
+  font-weight: 700
+  line-height: 2rem
+
+small
+  font-size: 0.9rem
+
+a
+  &:hover
+    background-color: $lighter-color
+
+.text-center
+  text-align: center
+
+img
+  width: 80%
+  max-width: 1024px
+  min-width: 300px
+  height: auto
+
+.highlight
+  background-color: $secondary-color
+  padding: 10px
+
+.grid-container
+  margin: 20px 0
+  display: grid
+  grid-template-areas: "a a a a" "b c c e" "f f g g" "h h g g" "i i i i"
+  grid-template-columns: 1fr 1fr 1fr 1fr
+  grid-template-rows: auto auto auto auto auto
+  grid-gap: 20px
+
+  > div
+    border: 1px dashed $accent-color
+    background: $light-color
+    padding: 20px
+    border-radius: 15px
+
+.zone-1-banner
+  grid-area: a
+
+.zone-2-table
+  grid-area: g
+
+.zone-3-calendar
+  grid-area: f
+
+.zone-4-announcements
+  grid-area: h
+
+.zone-5-users-online
+  grid-area: b
+
+.zone-6-user-stats
+  grid-area: c
+
+.zone-7-site-stats
+  grid-area: e
+
+.zone-8-news
+  grid-area: i
+
+#link-top
+  position: fixed
+  bottom: 20px
+  right: 20px
+  width: 30px
+  height: 30px
+  text-align: center
+  background-color: $accent-color
+  color: $light-color
+  padding: 10px
+  font-size: 20px
+  font-weight: bold
+  border-radius: 50%
+  box-shadow: 0 0 10px 0 $accent-color
+  transition: all 0.5s ease
+  text-decoration: none
+  opacity: 0.7
+  border: 3px solid #ffffff
+
+  &:hover
+    opacity: 1
+
+  &:before
+    content: "ᐃ"
+    line-height: 30px
+
+.table-container
+  overflow-x: auto
+
+table
+  width: 100%
+  margin: 10px
+  border-collapse: separate
+  border-spacing: 2px
+
+  caption
+    caption-side: bottom
+
+  td
+    padding: 5px 10px
+
+  thead tr
+    background-color: $accent-color
+    color: $light-color
+
+  tfoot tr
+    background-color: $lighter-color
+    color: $primary-color
+
+  thead tr th, tfoot tr th
+    padding: 10px
+
+  tbody
+    tr:nth-child(even)
+      background-color: $accent-color
+
+    tr:nth-child(odd)
+      background-color: $secondary-color
+
+    tr:not(:hover)
+      transition: background-color 0.5s ease
+
+    tr:hover
+      background-color: $lighter-color
+
+section
+  margin: 20px 0
+
+math mi
+  color: $accent-color
+
+.iframe-container
+  display: flex
+  flex-direction: row
+  align-items: flex-end
+  margin-top: 10px
+
+  iframe
+    border: 3px solid $accent-color
+
+.iframe-buttons
+  display: flex
+  flex-direction: column
+
+.btn-rounded
+  width: 200px
+  text-align: center
+  background-color: $lighter-color
+  border-top-right-radius: 30px
+  text-decoration: none
+  color: $primary-color
+  font-weight: 500
+  padding: 10px 0
+  box-shadow: inset 0 0 10px #000000
+  transition: all 0.5s ease
+  border-left: 5px solid $accent-color
+  margin-top: -5px
+
+  &:hover, &.active
+    border-left: 5px solid $lighter-color
+    background-color: $accent-color
+    color: #fff
+
+// Style the nav element
+nav
+  ul
+    list-style: none
+    display: flex
+
+    li
+      position: relative
+
+      &.active
+        ul
+          opacity: 1
+          transform: scaleY(1)
+          height: auto
+
+      a
+        color: $primary-color
+        text-decoration: none
+        display: block
+        height: 40px
+        line-height: 40px
+        padding: 0 20px
+        font-weight: 600
+        font-size: 1.2rem
+        background: $light-color
+        +transition-effect(all, $transition-duration, ease)
+
+        &::after
+          transition: opacity 1s
+
+          @media only screen and (min-width: $breakpoint-small)
+            content: attr(data-text)
+            position: absolute
+            text-align: center
+            width: 100%
+            top: -10px
+            left: 0
+            opacity: 0
+            transition: top 1s, opacity 0.6s
+
+        &.home-button
+            &:after
+              left: 15px
+
+        &:hover
+          color: $accent-color
+          background: $lighter-color
+
+          &::after
+            text-shadow: 0 0 10px $primary-color
+            top: 0
+            opacity: 1
+
+        &.home-button
+          display: flex
+
+        .home-ico
+          position: relative
+          width: 30px
+
+          &::before
+            content: "\f015"
+            font-family: "Font Awesome 5 Free"
+            text-indent: 0
+            position: absolute
+
+      // Submeniu
+      ul
+        top: 100%
+        display: flex
+        flex-direction: column
+        width: 100%
+        left: 0
+        height: 0
+        transform: scaleY(0)
+        transform-origin: top
+        +transition-effect(all, $transition-duration, ease)
+
+        @media only screen and (min-width: $breakpoint-small)
+          position: absolute
+          opacity: 0
+
+        li
+          width: 100%
+
+          a
+            +transition-effect(all, $transition-duration, ease)
+
+            &:hover
+              background-color: $accent-color
+              color: $light-color
+              text-decoration: underline
+
+// Stilizare independenta butoane meniu
+@for $i from 1 through 5
+  nav ul li:nth-child(#{$i}) a
+    color: lighten($primary-color, $i * 15%)
+
+// Medium and large screens
+@media only screen and (min-width: $breakpoint-medium + 1)
+  nav ul li:hover ul
+    opacity: 1
+    transform: scaleY(1)
+    height: auto
+
+// Medium screen
+@media only screen and (min-width: $breakpoint-small + 1) and (max-width: $breakpoint-medium)
+  body
+    font-size: 0.9rem
+    padding: 10px
+
+  img
+    width: 100%
+    max-width: 100%
+
+  .grid-container
+    grid-template-areas: "a a" "b c" "e e" "f g" "h h" "i i"
+    grid-template-columns: 1fr 1fr
+    grid-gap: 10px
+
+  nav
+    ul
+      li
+        a
+          font-size: 0.8rem
+
+          .home-button
+            .nav-text
+              display: none
+
+// Small screen
+@media only screen and (max-width: $breakpoint-small)
+  body
+    font-size: 0.8rem
+    padding: 5px
+
+  .grid-container
+    grid-template-areas: "a" "b" "c" "e" "f" "g" "h" "i"
+    grid-template-columns: 1fr
+    grid-gap: 5px
+
+  .table-container
+    overflow-x: scroll
+
+  table
+    border-spacing: 0
+
+  nav
+    ul
+      display: none
+      flex-direction: column
+
+      &.open
+        display: flex
+
+      li
+        width: 100%
+        background: $light-color
+
+        ul
+          &.active
+            display: block
+
+        a
+          font-size: 1.2rem
+          text-shadow: none
+          text-align: center
+          transition: background-color 0.5s ease
+
+          &.home-button
+            display: block
+
+            .nav-text
+              display: none
+
+            .home-ico
+              left: -10px
+
+        &:hover
+          color: $light-color
+          text-decoration: none
+
+    // Burger menu icon
+    .burger-menu
+      display: block
+      cursor: pointer
+
+      span
+        display: block
+        width: 25px
+        height: 3px
+        margin: 5px auto
+        background-color: $primary-color
+        transition: all 0.3s ease
+
+  nav ul li a .nav-text
+    display: inline-block
+    transform: scaleX(0)
+    overflow: hidden
+    transition: transform 0.5s ease
+    &.animate
+      transform: scaleX(1)

@@ -32,25 +32,49 @@
 <header>
     <h1 id="intro">Eventz!</h1>
     <nav>
+        <div class="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
         <ul>
             <li>
-                <a href="#home">Acasă</a>
+                <a href="#home" data-text="Acasa" class="home-button">
+                    <span class="home-ico"></span>
+                    <span class="nav-text">Acasa</span>
+                </a>
+            </li>
+            <li>
+                <a href="evenimente.html" data-text="Evenimente">
+                    <span class="nav-text">Evenimente</span>
+                </a>
                 <ul>
-                    <li><a href="#top-events">Top evenimente</a></li>
-                    <li><a href="#dub-videos">DUB videos</a></li>
-                    <li><a href="#faq">Întrebări frecvente</a></li>
-                    <li><a href="#suport">Suport & diverse</a></li>
+                    <li><a href="evenimente-teatru.html">Teatru</a></li>
+                    <li><a href="evenimente.opera.html">Opera</a></li>
+                    <li><a href="evenimente-muzica.html">Muzica</a></li>
                 </ul>
             </li>
             <li>
-                <a href="evenimente.html">Evenimente</a>
+                <a href="evenimente-concerte.html" data-text="Concerte">
+                    <span class="nav-text">Concerte</span>
+                </a>
                 <ul>
-                    <li><a href="evenimente-concerte.html">Concerte</a></li>
-                    <li><a href="evenimente-teatru.html">Teatru</a></li>
-                    <li><a href="evenimente.opera.html">Opera</a></li>
+                    <li><a href="#">Electronic</a></li>
+                    <li><a href="#">Hip-Hop</a></li>
+                    <li><a href="#">Jazz</a></li>
                 </ul>
             </li>
-            <li><a href="contact.html">Contact</a></li>
+            <li>
+                <a href="contact.html" data-text="Contact &amp; suport">
+                    <span class="nav-text">Contact &amp; suport</span>
+                </a>
+                <ul>
+                    <li><a href="index.html#faq">Întrebari frecvente</a></li>
+                    <li><a href="index.html#suport">Suport & diverse</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </li>
         </ul>
     </nav>
 </header>
