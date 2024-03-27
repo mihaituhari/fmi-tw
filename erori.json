@@ -12,6 +12,13 @@
       "titlu": "Pagina nu a fost găsită",
       "text": "Ne pare rău, dar pagina pe care o căutați nu există.",
       "imagine": "404.png"
+    },
+    {
+      "identificator": 403,
+      "status": true,
+      "titlu": "Forbidden",
+      "text": "Nu aveți permisiunea de a accesa acest director.",
+      "imagine": "403.jpg"
     }
   ]
 }

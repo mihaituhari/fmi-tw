@@ -27,9 +27,7 @@ function afisareEroare(res, identificator, titlu, text, imagine) {
 
   if (titlu) eroare.titlu = titlu;
   if (text) eroare.text = text;
-  if (imagine) eroare.imagine = imagine
-
-  eroare.imagine = path.join(obGlobal.obErori.cale_baza, eroare.imagine);
+  if (imagine) eroare.imagine = path.join(obGlobal.obErori.cale_baza, imagine);
 
   res.status(identificator || 500).render('pagini/eroare', {
     titlu: eroare.titlu,

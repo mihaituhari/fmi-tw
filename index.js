@@ -11,11 +11,18 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Resurse
 app.use('/resurse', express.static(path.join(__dirname, 'resurse')));
+app.use('/resurse', (req, res, next) => {
+  if (req.path.endsWith('/')) {
+    afisareEroare(res, 403);
+  } else {
+    next();
+  }
+});
 
 // Rute
 app.get(['/', '/index', '/home', '/*'], (req, res) => {
   let pagina;
-  let userIP = req.ip || req.connection.remoteAddress;
+  let userIP = req.ip;
 
   if (['/', '/index', '/home'].includes(req.path)) {
     pagina = 'index';
