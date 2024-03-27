@@ -19,6 +19,12 @@
       "titlu": "Forbidden",
       "text": "Nu aveți permisiunea de a accesa acest director.",
       "imagine": "403.jpg"
+    },
+    {
+      "identificator": 400,
+      "titlu": "Bad Request",
+      "text": "Cererea nu poate fi procesată deoarece conține o sintaxă greșită.",
+      "imagine": "400.jpg"
     }
   ]
 }

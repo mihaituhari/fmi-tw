@@ -18,6 +18,13 @@ app.use('/resurse', (req, res, next) => {
     next();
   }
 });
+app.use((req, res, next) => {
+  if (req.path.endsWith('.ejs')) {
+    afisareEroare(res, 400);
+  } else {
+    next();
+  }
+});
 
 // Rute
 app.get('/favicon.ico', (req, res) => {
