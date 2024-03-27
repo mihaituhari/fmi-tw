@@ -236,6 +236,23 @@ math mi {
   color: #fff;
 }
 
+video {
+  width: 100%;
+  max-width: 800px;
+  min-width: 200px;
+}
+
+::cue {
+  background-color: #fff;
+  color: #333;
+  text-align: center;
+  vertical-align: top;
+}
+
+::cue(.italic) {
+  font-style: italic;
+}
+
 @media only screen and (min-width: 1025px) and (max-width: 1260px) {
   body {
     font-size: 0.9rem;
@@ -268,6 +285,27 @@ math mi {
     border-spacing: 0;
   }
 }
+.d-flex {
+  display: flex;
+}
+
+.flex-columns {
+  display: flex;
+  flex-direction: column;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.w-100 {
+  width: 100%;
+}
+
 nav ul {
   list-style: none;
   display: flex;

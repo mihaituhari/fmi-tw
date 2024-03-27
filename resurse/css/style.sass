@@ -212,6 +212,20 @@ math mi
     background-color: $accent-color
     color: #fff
 
+video
+  width: 100%
+  max-width: 800px
+  min-width: 200px
+
+::cue
+  background-color: #fff
+  color: #333
+  text-align: center
+  vertical-align: top
+
+::cue(.italic)
+  font-style: italic
+
 // Medium screen
 @media only screen and (min-width: $breakpoint-small + 1) and (max-width: $breakpoint-medium)
   body
@@ -245,5 +259,6 @@ math mi
   table
     border-spacing: 0
 
+@import "components/helpers.sass"
 @import "components/nav.sass"
 @import "components/print.sass"
