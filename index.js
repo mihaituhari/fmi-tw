@@ -20,6 +20,10 @@ app.use('/resurse', (req, res, next) => {
 });
 
 // Rute
+app.get('/favicon.ico', (req, res) => {
+  res.sendFile(path.join(__dirname, 'resurse', 'ico', 'favicon.ico'));
+});
+
 app.get(['/', '/index', '/home', '/*'], (req, res) => {
   let pagina;
   let userIP = req.ip;
