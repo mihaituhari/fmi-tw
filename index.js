@@ -2,17 +2,17 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const port = 8081;
-
-const erori = require('./erori.json');
+const fs = require('fs');
+const {initErori, afisareEroare} = require('./errorManagement');
 
 // Views
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Resources
+// Resurse
 app.use('/resurse', express.static(path.join(__dirname, 'resurse')));
 
-// Routes
+// Rute
 app.get(['/', '/index', '/home', '/*'], (req, res) => {
   let pagina;
   if (['/', '/index', '/home'].includes(req.path)) {
@@ -27,24 +27,10 @@ app.get(['/', '/index', '/home', '/*'], (req, res) => {
       return;
     }
 
-    if (err.message.startsWith('Failed to lookup view')) {
-      // Error 404
-      let eroare = erori.info_erori.find(e => e.identificator === 404) || erori.eroare_default;
-
-      res.status(404).render('pagini/eroare', {
-        titlu: eroare.titlu,
-        text: eroare.text,
-        imagine: path.join(erori.cale_baza, eroare.imagine),
-      });
-    } else {
-      // Generic error
-      let eroare = erori.eroare_default;
-
-      res.status(500).render('pagini/eroare', {
-        titlu: eroare.titlu,
-        text: eroare.text,
-        imagine: path.join(erori.cale_baza, eroare.imagine),
-      });
+    if (err.message.startsWith('Failed to lookup view')) { // 404
+      afisareEroare(res, 404);
+    } else { // Eroare generica
+      afisareEroare(res);
     }
   });
 });
@@ -53,6 +39,8 @@ app.get(['/', '/index', '/home', '/*'], (req, res) => {
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);
 });
+
+initErori();
 
 console.log('Directory of this file [__dirname]: ' + __dirname);
 console.log('File path [__filename]: ' + __filename);
