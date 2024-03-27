@@ -1,4 +1,6 @@
 @charset "UTF-8";
+@import "reset.css";
+@import "fontawesome.css";
 html, body {
   width: 100%;
   margin: 0;
