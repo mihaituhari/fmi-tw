@@ -59,9 +59,25 @@ small {
 a:hover {
   background-color: #ffd97a;
 }
+a:visited {
+  color: #52b412;
+}
 
-.text-center {
-  text-align: center;
+a[href^=http]::before {
+  content: "↥";
+  font-size: 1.5em;
+}
+
+a[href^=http]:hover::before {
+  color: #ff9c7a;
+}
+
+main a {
+  background: radial-gradient(circle, #ff9c7a 0%, #ff9c7a 40%, transparent 80%, transparent 100%) no-repeat 50% 50%/0 0;
+  transition: background-size 0.5s ease;
+}
+main a:hover {
+  background-size: 100% 100%;
 }
 
 img {
@@ -304,6 +320,10 @@ video {
 
 .w-100 {
   width: 100%;
+}
+
+.text-center {
+  text-align: center;
 }
 
 nav ul {

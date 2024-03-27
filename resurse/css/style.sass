@@ -54,9 +54,22 @@ small
 a
   &:hover
     background-color: $lighter-color
+  &:visited
+    color: $visited-link-color
 
-.text-center
-  text-align: center
+a[href^="http"]::before
+  content: "\21A5"
+  font-size: 1.5em
+
+a[href^="http"]:hover::before
+  color: $secondary-color
+
+main a
+  background: radial-gradient(circle, $secondary-color 0%, $secondary-color 40%, transparent 80%, transparent 100%) no-repeat 50% 50% / 0 0
+  transition: background-size 0.5s ease
+
+  &:hover
+    background-size: 100% 100%
 
 img
   width: 80%
