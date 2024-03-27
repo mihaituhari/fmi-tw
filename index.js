@@ -13,12 +13,14 @@ app.set('views', path.join(__dirname, 'views'));
 app.use('/resurse', express.static(path.join(__dirname, 'resurse')));
 
 // Routes
-app.get(['/', '/index', '/home'], (req, res) => {
-  res.render('pagini/index');
-});
+app.get(['/', '/index', '/home', '/*'], (req, res) => {
+  let pagina;
+  if (['/', '/index', '/home'].includes(req.path)) {
+    pagina = 'index';
+  } else {
+    pagina = req.path.substr(1); // eliminate the slash at the beginning
+  }
 
-app.get('/*', (req, res) => {
-  let pagina = req.path.substr(1); // eliminam slash-ul de la inceput
   res.render(`pagini/${pagina}`, function(err, rezultatRandare) {
     if (!err) {
       res.send(rezultatRandare);
@@ -26,7 +28,7 @@ app.get('/*', (req, res) => {
     }
 
     if (err.message.startsWith('Failed to lookup view')) {
-      // Eroare 404
+      // Error 404
       let eroare = erori.info_erori.find(e => e.identificator === 404) || erori.eroare_default;
 
       res.status(404).render('pagini/eroare', {
@@ -35,7 +37,7 @@ app.get('/*', (req, res) => {
         imagine: path.join(erori.cale_baza, eroare.imagine),
       });
     } else {
-      // Eroare generica
+      // Generic error
       let eroare = erori.eroare_default;
 
       res.status(500).render('pagini/eroare', {
