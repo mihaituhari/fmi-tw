@@ -1,0 +1,176 @@
+@import "variables"
+
+nav
+  ul
+    list-style: none
+    display: flex
+
+    li
+      position: relative
+
+      &.active
+        ul
+          opacity: 1
+          transform: scaleY(1)
+          height: auto
+
+      a
+        color: $primary-color
+        text-decoration: none
+        display: block
+        height: 40px
+        line-height: 40px
+        padding: 0 20px
+        font-weight: 600
+        font-size: 1.2rem
+        background: $light-color
+        +transition-effect(all, $transition-duration, ease)
+
+        &::after
+          transition: opacity 1s
+
+          @media only screen and (min-width: $breakpoint-small)
+            content: attr(data-text)
+            position: absolute
+            text-align: center
+            width: 100%
+            top: -10px
+            left: 0
+            opacity: 0
+            transition: top 1s, opacity 0.6s
+
+        &.home-button
+          &:after
+            left: 15px
+
+        &:hover
+          color: $accent-color
+          background: $lighter-color
+
+          &::after
+            text-shadow: 0 0 10px $primary-color
+            top: 0
+            opacity: 1
+
+        &.home-button
+          display: flex
+
+        .home-ico
+          position: relative
+          width: 30px
+
+          &::before
+            content: "\f015"
+            font-family: "Font Awesome 5 Free"
+            text-indent: 0
+            position: absolute
+
+      // Submeniu
+      ul
+        top: 100%
+        display: flex
+        flex-direction: column
+        width: 100%
+        left: 0
+        height: 0
+        transform: scaleY(0)
+        transform-origin: top
+        +transition-effect(all, $transition-duration, ease)
+
+        @media only screen and (min-width: $breakpoint-small)
+          position: absolute
+          opacity: 0
+
+        li
+          width: 100%
+
+          a
+            +transition-effect(all, $transition-duration, ease)
+
+            &:hover
+              background-color: $accent-color
+              color: $light-color
+              text-decoration: underline
+
+// Medium and large screens
+@media only screen and (min-width: $breakpoint-medium + 1)
+  nav ul li:hover ul
+    opacity: 1
+    transform: scaleY(1)
+    height: auto
+
+// Medium screen
+@media only screen and (min-width: $breakpoint-small + 1) and (max-width: $breakpoint-medium)
+  nav
+    ul
+      li
+        a
+          font-size: 0.8rem
+
+          .home-button
+            .nav-text
+              display: none
+
+// Small screen
+@media only screen and (max-width: $breakpoint-small)
+  nav
+    ul
+      display: none
+      flex-direction: column
+
+      &.open
+        display: flex
+
+      li
+        width: 100%
+        background: $light-color
+
+        ul
+          &.active
+            display: block
+
+        a
+          font-size: 1.2rem
+          text-shadow: none
+          text-align: center
+          transition: background-color 0.5s ease
+
+          &.home-button
+            display: block
+
+            .nav-text
+              display: none
+
+            .home-ico
+              left: -10px
+
+        &:hover
+          color: $light-color
+          text-decoration: none
+
+    // Burger menu icon
+    .burger-menu
+      display: block
+      cursor: pointer
+
+      span
+        display: block
+        width: 25px
+        height: 3px
+        margin: 5px auto
+        background-color: $primary-color
+        transition: all 0.3s ease
+
+  nav ul li a .nav-text
+    display: inline-block
+    transform: scaleX(0)
+    overflow: hidden
+    transition: transform 0.5s ease
+
+    &.animate
+      transform: scaleX(1)
+
+// Stilizare independenta butoane meniu
+@for $i from 1 through 5
+  nav ul li:nth-child(#{$i}) a
+    color: lighten($primary-color, $i * 15%)
