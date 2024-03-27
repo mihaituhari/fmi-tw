@@ -15,6 +15,7 @@ app.use('/resurse', express.static(path.join(__dirname, 'resurse')));
 // Rute
 app.get(['/', '/index', '/home', '/*'], (req, res) => {
   let pagina;
+  let userIP = req.ip || req.connection.remoteAddress;
 
   if (['/', '/index', '/home'].includes(req.path)) {
     pagina = 'index';
@@ -22,7 +23,7 @@ app.get(['/', '/index', '/home', '/*'], (req, res) => {
     pagina = req.path.substr(1); // Eliminam primul caracter (/)
   }
 
-  res.render(`pagini/${pagina}`, function(err, rezultatRandare) {
+  res.render(`pagini/${pagina}`, {ip: userIP}, function(err, rezultatRandare) {
     if (!err) {
       res.send(rezultatRandare);
       return;

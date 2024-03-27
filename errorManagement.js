@@ -16,15 +16,21 @@ function initErori() {
 
 function afisareEroare(res, identificator, titlu, text, imagine) {
   let eroare;
+
   if (identificator) {
     eroare = obGlobal.obErori.info_erori.find(e => e.identificator === identificator);
   }
+
   if (!eroare) {
     eroare = obGlobal.obErori.eroare_default;
   }
+
   if (titlu) eroare.titlu = titlu;
   if (text) eroare.text = text;
-  if (imagine) eroare.imagine = path.join(obGlobal.obErori.cale_baza, imagine);
+  if (imagine) eroare.imagine = imagine
+
+  eroare.imagine = path.join(obGlobal.obErori.cale_baza, eroare.imagine);
+
   res.status(identificator || 500).render('pagini/eroare', {
     titlu: eroare.titlu,
     text: eroare.text,
