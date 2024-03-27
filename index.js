@@ -15,10 +15,11 @@ app.use('/resurse', express.static(path.join(__dirname, 'resurse')));
 // Rute
 app.get(['/', '/index', '/home', '/*'], (req, res) => {
   let pagina;
+
   if (['/', '/index', '/home'].includes(req.path)) {
     pagina = 'index';
   } else {
-    pagina = req.path.substr(1); // eliminate the slash at the beginning
+    pagina = req.path.substr(1); // Eliminam primul caracter (/)
   }
 
   res.render(`pagini/${pagina}`, function(err, rezultatRandare) {
@@ -27,7 +28,7 @@ app.get(['/', '/index', '/home', '/*'], (req, res) => {
       return;
     }
 
-    if (err.message.startsWith('Failed to lookup view')) { // 404
+    if (err.message.startsWith('Failed to lookup view')) { // Eroare 404
       afisareEroare(res, 404);
     } else { // Eroare generica
       afisareEroare(res);

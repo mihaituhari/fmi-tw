@@ -193,6 +193,9 @@ table tbody tr:hover {
 section {
   margin: 20px 0;
 }
+section p {
+  padding: 15px 0;
+}
 
 math mi {
   color: #ff5b4f;

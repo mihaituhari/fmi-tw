@@ -30,22 +30,17 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() {
       mainMenu.querySelectorAll('.nav-text').forEach(function(item) {
         item.classList.toggle('animate');
-      })
+      });
     }, 200);
   });
 
-  let submenuItems = document.querySelectorAll('nav ul li');
+  let submenuButtons = document.querySelectorAll('nav ul li a.submenu');
 
-  submenuItems.forEach(function(item) {
-    item.addEventListener('click', function(event) {
+  submenuButtons.forEach(function(button) {
+    button.addEventListener('click', function(event) {
       event.preventDefault();
 
-      let childMenu = item.querySelector('ul');
-
-      if (childMenu) {
-        item.classList.toggle('active');
-        item.blur();
-      }
+      button.parentElement.classList.toggle('active');
     });
   });
 });
