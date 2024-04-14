@@ -20431,6 +20431,27 @@ video {
   font-style: italic;
 }
 
+hr {
+  height: 10px;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.5) 0%, #ff9c7a 50%, rgba(255, 255, 255, 0.5) 100%);
+  border: none;
+  opacity: 1;
+  position: relative;
+  overflow: visible;
+}
+hr::before {
+  content: "";
+  position: absolute;
+  top: -7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 3px solid #ff5b4f;
+  background-color: #ff9c7a;
+}
+
 @media only screen and (min-width: 1025px) and (max-width: 1260px) {
   body {
     font-size: 0.9rem;

@@ -248,6 +248,25 @@ video
 ::cue(.italic)
   font-style: italic
 
+hr
+  height: 10px
+  background: linear-gradient(0deg, rgba(255,255,255,0.5) 0%, $secondary-color 50%, rgba(255,255,255,0.5) 100%)
+  border: none
+  opacity: 1
+  position: relative
+  overflow: visible
+  &::before
+    content: ""
+    position: absolute
+    top: -7px
+    left: 50%
+    transform: translateX(-50%)
+    width: 22px
+    height: 22px
+    border-radius: 50%
+    border: 3px solid $accent-color
+    background-color: $secondary-color
+
 // Medium screen
 @media only screen and (min-width: $breakpoint-small + 1) and (max-width: $breakpoint-medium)
   body
