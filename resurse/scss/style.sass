@@ -1,8 +1,8 @@
-@import "utilities/reset"
-@import "bootstrap/bootstrap"
+@import "components/variables"
+@import "components/reset"
+@import "bootstrap/custom"
 @import "fontawesome/fontawesome"
 @import "fontawesome/solid"
-@import "components/variables"
 
 html, body
   width: 100%
@@ -44,11 +44,18 @@ footer
     justify-content: space-between
     line-height: 1.4rem
 
+    p
+      padding: 5px 0
+      margin: 0
+
 h1, h2, h3
   border-bottom: 2px solid $accent-color
   font-size: 1.2rem
   font-weight: 700
   line-height: 2rem
+
+h2 > .fa
+  margin-right: 5px
 
 small
   font-size: 0.9rem
@@ -125,8 +132,8 @@ img
   position: fixed
   bottom: 20px
   right: 20px
-  width: 30px
-  height: 30px
+  width: 56px
+  height: 56px
   text-align: center
   background-color: $accent-color
   color: $light-color

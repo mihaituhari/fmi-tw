@@ -20198,12 +20198,20 @@ footer section {
   justify-content: space-between;
   line-height: 1.4rem;
 }
+footer section p {
+  padding: 5px 0;
+  margin: 0;
+}
 
 h1, .h1, h2, .h2, h3, .h3 {
   border-bottom: 2px solid #ff5b4f;
   font-size: 1.2rem;
   font-weight: 700;
   line-height: 2rem;
+}
+
+h2 > .fa, .h2 > .fa {
+  margin-right: 5px;
 }
 
 small, .small {
@@ -20297,8 +20305,8 @@ img {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  width: 30px;
-  height: 30px;
+  width: 56px;
+  height: 56px;
   text-align: center;
   background-color: #ff5b4f;
   color: #f5f1f1;
@@ -20493,6 +20501,8 @@ video {
 nav ul {
   list-style: none;
   display: flex;
+  padding: 0;
+  margin: 0;
 }
 nav ul li {
   position: relative;
