@@ -63,6 +63,7 @@ small
 a
   &:hover
     background-color: $lighter-color
+
   &:visited
     color: $visited-link-color
 
@@ -250,11 +251,12 @@ video
 
 hr
   height: 10px
-  background: linear-gradient(0deg, rgba(255,255,255,0.5) 0%, $secondary-color 50%, rgba(255,255,255,0.5) 100%)
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.5) 0%, $secondary-color 50%, rgba(255, 255, 255, 0.5) 100%)
   border: none
   opacity: 1
   position: relative
   overflow: visible
+
   &::before
     content: ""
     position: absolute
@@ -266,6 +268,19 @@ hr
     border-radius: 50%
     border: 3px solid $accent-color
     background-color: $secondary-color
+
+.reflected-text
+  position: relative
+  font-size: 2rem
+
+  &:before
+    content: attr(data-text)
+    transform: rotateX(180deg) skew(-45deg) scaleY(0.5) translate(10px, -25px)
+    opacity: 0.55
+    transform-origin: 0 0
+    top: 100%
+    left: 0
+    position: absolute
 
 // Medium screen
 @media only screen and (min-width: $breakpoint-small + 1) and (max-width: $breakpoint-medium)
