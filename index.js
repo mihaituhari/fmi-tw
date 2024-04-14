@@ -54,7 +54,14 @@ function compileazaScss(caleScss, caleCss) {
   }
 
   // Salvam fisierul CSS vechi (daca exista) in folderul de backup
-  let caleBackup = path.join(caleBackupFolderCss, path.basename(caleCssAbsoluta));
+  let date = new Date();
+  let timestamp = date.getFullYear().toString() +
+      (date.getMonth() + 1).toString().padStart(2, '0') +
+      date.getDate().toString().padStart(2, '0') + '_' +
+      date.getHours().toString().padStart(2, '0') +
+      date.getMinutes().toString().padStart(2, '0'); // Format: YYYYMMDD-HHMM
+
+  let caleBackup = path.join(caleBackupFolderCss, path.basename(caleCssAbsoluta, '.css') + '_' + timestamp + '.css');
   if (fs.existsSync(caleCssAbsoluta)) {
     fs.copyFileSync(caleCssAbsoluta, caleBackup);
   }
