@@ -1,11 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-let obGlobal = {
-  obErori: null,
-};
-
-function initErori() {
+function initErori(obGlobal) {
   const erori = JSON.parse(fs.readFileSync('erori.json', 'utf8'));
 
   obGlobal.obErori = erori;

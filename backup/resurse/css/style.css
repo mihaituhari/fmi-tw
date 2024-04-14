@@ -8319,7 +8319,7 @@ html, body {
 }
 
 body {
-  color: #050202;
+  color: red;
   transition: font-size 0.5s ease;
   padding: 20px;
 }
