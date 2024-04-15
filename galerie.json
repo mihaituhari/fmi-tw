@@ -1,0 +1,117 @@
+{
+  "cale_baza": "/resurse/images/galerie",
+  "imagini": [
+    {
+      "cale_fisier": "chitara.png",
+      "titlu": "Chitara",
+      "alt": "muzica la chitara",
+      "text_descriere": "Muzica la chitara",
+      "luni": [
+        "ianuarie",
+        "februarie",
+        "martie",
+        "aprilie",
+        "mai",
+        "iunie"
+      ]
+    },
+    {
+      "cale_fisier": "opera.png",
+      "titlu": "Opera",
+      "alt": "opera",
+      "text_descriere": "Opera",
+      "luni": [
+        "ianuarie",
+        "februarie",
+        "martie",
+        "aprilie",
+        "mai",
+        "iunie"
+      ]
+    },
+    {
+      "cale_fisier": "disco.png",
+      "titlu": "Disco",
+      "alt": "disco",
+      "text_descriere": "Disco",
+      "luni": [
+        "ianuarie",
+        "februarie",
+        "martie",
+        "aprilie",
+        "mai",
+        "iunie"
+      ]
+    },
+    {
+      "cale_fisier": "bass.png",
+      "titlu": "Bass",
+      "alt": "bass",
+      "text_descriere": "Bass",
+      "luni": [
+        "ianuarie",
+        "februarie",
+        "martie",
+        "aprilie",
+        "mai",
+        "iunie"
+      ]
+    },
+    {
+      "cale_fisier": "electro.png",
+      "titlu": "Electro",
+      "alt": "electro",
+      "text_descriere": "Electro",
+      "luni": [
+        "ianuarie",
+        "februarie",
+        "martie",
+        "aprilie",
+        "mai",
+        "iunie"
+      ]
+    },
+    {
+      "cale_fisier": "balet.png",
+      "titlu": "Balet",
+      "alt": "balet",
+      "text_descriere": "Balet",
+      "luni": [
+        "ianuarie",
+        "februarie",
+        "martie",
+        "aprilie",
+        "mai",
+        "iunie"
+      ]
+    },
+    {
+      "cale_fisier": "teatru.png",
+      "titlu": "Teatru",
+      "alt": "teatru",
+      "text_descriere": "Teatru",
+      "luni": [
+        "ianuarie",
+        "februarie",
+        "martie",
+        "aprilie",
+        "mai",
+        "iunie"
+      ]
+    },
+    {
+      "cale_fisier": "dnb.png",
+      "titlu": "DNB",
+      "alt": "drum and bass",
+      "text_descriere": "Drum and Bass",
+      "luni": [
+        "ianuarie",
+        "februarie",
+        "martie",
+        "aprilie",
+        "mai",
+        "iunie"
+      ]
+    }
+  ]
+}

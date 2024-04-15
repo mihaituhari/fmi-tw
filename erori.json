@@ -3,7 +3,7 @@
   "eroare_default": {
     "titlu": "Eroare",
     "text": "A apărut o eroare neașteptată.",
-    "imagine": "default.png"
+    "imagine": "500.png"
   },
   "info_erori": [
     {

@@ -14,6 +14,7 @@ const app = express();
 const port = 8081;
 
 const {initErori, afisareEroare} = require('./errorManagement');
+const {getGalleryImages} = require('./functions');
 
 console.log(`\n🚀 Serverul porneste ...`);
 console.log('→ Folderul fisierului [__dirname]: ' + __dirname);
@@ -98,14 +99,14 @@ app.set('views', path.join(__dirname, 'views'));
 app.use('/resurse', express.static(path.join(__dirname, 'resurse')));
 app.use('/resurse', (req, res, next) => {
   if (req.path.endsWith('/')) {
-    afisareEroare(res, 403);
+    afisareEroare(obGlobal, res, 403);
   } else {
     next();
   }
 });
 app.use((req, res, next) => {
   if (req.path.endsWith('.ejs')) {
-    afisareEroare(res, 400);
+    afisareEroare(obGlobal, res, 400);
   } else {
     next();
   }
@@ -121,6 +122,7 @@ app.get('/favicon.ico', (req, res) => {
 app.get(['/', '/index', '/home', '/*'], (req, res) => {
   let pagina;
   let userIP = req.ip;
+  let galleryImages = getGalleryImages();
 
   if (['/', '/index', '/home'].includes(req.path)) {
     pagina = 'index';
@@ -128,16 +130,16 @@ app.get(['/', '/index', '/home', '/*'], (req, res) => {
     pagina = req.path.substr(1); // Eliminam primul caracter (/)
   }
 
-  res.render(`pagini/${pagina}`, {ip: userIP}, function(err, rezultatRandare) {
+  res.render(`pagini/${pagina}`, {ip: userIP, galleryImages: galleryImages}, function(err, rezultatRandare) {
     if (!err) {
       res.send(rezultatRandare);
       return;
     }
 
     if (err.message.startsWith('Failed to lookup view')) { // Eroare 404
-      afisareEroare(res, 404);
+      afisareEroare(obGlobal, res, 404);
     } else { // Eroare generica
-      afisareEroare(res);
+      afisareEroare(obGlobal, res);
     }
   });
 });

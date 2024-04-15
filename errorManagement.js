@@ -10,7 +10,7 @@ function initErori(obGlobal) {
   });
 }
 
-function afisareEroare(res, identificator, titlu, text, imagine) {
+function afisareEroare(obGlobal, res, identificator, titlu, text, imagine) {
   let eroare;
 
   if (identificator) {
@@ -23,7 +23,11 @@ function afisareEroare(res, identificator, titlu, text, imagine) {
 
   if (titlu) eroare.titlu = titlu;
   if (text) eroare.text = text;
-  if (imagine) eroare.imagine = path.join(obGlobal.obErori.cale_baza, imagine);
+  if (imagine) eroare.imagine = imagine;
+
+  if (eroare.imagine && !eroare.imagine.includes(obGlobal.obErori.cale_baza)) {
+    eroare.imagine = path.join(obGlobal.obErori.cale_baza, eroare.imagine);
+  }
 
   res.status(identificator || 500).render('pagini/eroare', {
     titlu: eroare.titlu,
