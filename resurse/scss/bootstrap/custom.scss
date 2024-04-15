@@ -1,54 +1,45 @@
-@import "../components/variables"; // Customizare
+@import "../components/variables";
+@import "/variables";
 
-@import "mixins/banner";
-@include bsBanner("");
+// Definim variabilele Bootstrap pe care dorim să le customizăm
+$theme-colors: (
+        "primary": $primary-color,
+        "secondary": $secondary-color,
+);
 
+$font-family-base: "Lato", sans-serif;
+$headings-font-family: $font-family-base;
+$headings-font-weight: 700;
+$headings-line-height: 2rem;
 
-// scss-docs-start import-stack
-// Configuration
-@import "functions";
-@import "variables";
-@import "variables-dark";
-@import "maps";
-@import "mixins";
-@import "utilities";
+$h1-font-size: 2.5rem;
+$h2-font-size: 2rem;
+$h3-font-size: 1.75rem;
+$h4-font-size: 1.5rem;
+$h5-font-size: 1.25rem;
+$h6-font-size: 1rem;
 
-// Layout & components
-@import "root";
-@import "reboot";
-@import "type";
-@import "images";
-@import "containers";
-@import "grid";
-@import "tables";
-@import "forms";
-@import "buttons";
-@import "transitions";
-@import "dropdown";
-@import "button-group";
-@import "nav";
-@import "navbar";
-@import "card";
-@import "accordion";
-@import "breadcrumb";
-@import "pagination";
-@import "badge";
-@import "alert";
-@import "progress";
-@import "list-group";
-@import "close";
-@import "toasts";
-@import "modal";
-@import "tooltip";
-@import "popover";
-@import "carousel";
-@import "spinners";
-@import "offcanvas";
-@import "placeholders";
+$border-radius: 15px;
+$border-radius-lg: 30px;
+$border-radius-sm: 5px;
 
-// Helpers
-@import "helpers";
+$grid-breakpoints: (
+        xs: 0,
+        sm: 576px,
+        md: 768px,
+        lg: 992px,
+        xl: 1200px,
+        xxl: 1400px
+);
 
-// Utilities
-@import "utilities/api";
-// scss-docs-end import-stack
+$container-max-widths: (
+        sm: 540px,
+        md: 720px,
+        lg: 960px,
+        xl: 1140px,
+        xxl: 1320px
+);
+
+$code-color: #dc3545;
+
+@import "bootstrap";
