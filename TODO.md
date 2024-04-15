@@ -1,11 +1,5 @@
 Galerie
 
-1. Indexarea se va face cu litere mici grecești (α, β, γ, ...) (ideal folosind un counter css)
-
-2. Pe ecran mediu, imaginile se vor aseza pe două coloane, folosind grid.
-
-3. Pe ecran mic, imaginile se vor aseza una sub alta, pe o coloană.
-
 4. Tranzitie: Când se vine cu cursorul pe o imagine din galerie, se va realiza următoarea tranziție:
 textul din figcaption, asociat imaginii, se va scala treptat (fără a se scala și imaginea), simetric 
 față de centrul boxului descrierii, iar imaginii îi va crește treptat contrastul la 200% (proprietatea filter).
