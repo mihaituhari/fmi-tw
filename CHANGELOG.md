@@ -1,44 +1,43 @@
-v5.0.0-node / TBA
+v5.0.0-scss-bootstrap-efecte / TBA
 ==================
-* Compilare automata SCSS
-* Adaugare Bootstrap
-* Bonus: compilare SCSS cu timestamp
-* Stilizare <hr>
-* Efect text reflectat pe `/despre`
+* Pus pe Github (0.05)
+* Compilare automata SCSS (0.25)
+* Adaugare Bootstrap (0)
+* Bonus: compilare SCSS cu timestamp (0.05)
+* Efect stilizare <hr> (0.1)
+* Efect text reflectat pe `/despre` (0.15)
+* Efect marquee orizontal pe `/despre` (0.05)
+* Efect aspect text selectat (0.025)
 
-v4.0.0-node / 2024-04-03
+v4.0.0-node / 2024-04-03 / 0.6 pct
 ==================
-* Pus site pe NodeJS & EJS
-* Task video-vtt pe `/despre`
-* Stilizare linkuri
+* Pus site pe NodeJS & EJS (0.5)
+* Task video-vtt pe `/despre` (0.05)
+* Stilizare linkuri (0.05)
 
-v3.0.2-etapa-3-print / 2024-03-27
+v3.0.2-etapa-3-print / 2024-03-27 / 0.4 pct
 ==================
-* Print style
+* Task meniu (0.25)
+* Print style (0.15)
 
-v3.0.1-etapa-3-variante-meniu / 2024-03-27
+v2.0.0-etapa-2 / 2024-03-17 / 0.425 pct
 ==================
-* Variante meniu 
-
-v2.0.0-etapa-2 / 2024-03-17
-==================
-* Schema cromatica
-* Layout grid
-* Design rudimentar
-* Google Fonts & Font Awesome
-* Task tabel
-* Task iframe & butoane
+* Schema cromatica (0.025)
+* Task layout grid (0.15)
+* Design rudimentar (0.025)
+* Google Fonts & Font Awesome (0.025)
+* Task tabel (0.05)
+* Task iframe & butoane (0.05)
 
 * Bonus:
-  * Resetare CSS
-  * Stilizare MathML
+  * Resetare CSS (0.05)
+  * Stilizare MathML (0.05)
 
-v1.0.0-etapa-1 / 2024-03-17
+v1.0.0-etapa-1 / 2024-03-17 / 0.55 pct
 ==================
+* Validat (0.5)
+* Bonus MathML (0.05)
 
-* Validat
-* Bonus MathML
-
-v0.0.0-etapa-0-cerinte / 2024-03-14
+v0.0.0-etapa-0-cerinte / 2024-03-14 / 0.3 pct
 ==================
-* Add project details
+* Add project details (0.3)

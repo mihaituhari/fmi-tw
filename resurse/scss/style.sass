@@ -269,18 +269,10 @@ hr
     border: 3px solid $accent-color
     background-color: $secondary-color
 
-.reflected-text
-  position: relative
-  font-size: 2rem
+p::selection
+  color: $indigo
+  background-color: $secondary-color
 
-  &:before
-    content: attr(data-text)
-    transform: rotateX(180deg) skew(-45deg) scaleY(0.5) translate(10px, -25px)
-    opacity: 0.55
-    transform-origin: 0 0
-    top: 100%
-    left: 0
-    position: absolute
 
 // Medium screen
 @media only screen and (min-width: $breakpoint-small + 1) and (max-width: $breakpoint-medium)
@@ -317,4 +309,5 @@ hr
 
 @import "components/helpers"
 @import "components/nav"
+@import "components/effects"
 @import "components/print"

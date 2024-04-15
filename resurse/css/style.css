@@ -142,7 +142,7 @@ table {
   --bs-link-decoration: underline;
   --bs-link-hover-color: #0a58ca;
   --bs-link-hover-color-rgb: 10, 88, 202;
-  --bs-code-color: #d63384;
+  --bs-code-color: #dc3545;
   --bs-highlight-color: #212529;
   --bs-highlight-bg: #fff3cd;
   --bs-border-width: 1px;
@@ -214,7 +214,7 @@ table {
   --bs-link-hover-color: #8bb9fe;
   --bs-link-color-rgb: 110, 168, 254;
   --bs-link-hover-color-rgb: 139, 185, 254;
-  --bs-code-color: #e685b5;
+  --bs-code-color: #ea868f;
   --bs-highlight-color: #dee2e6;
   --bs-highlight-bg: #664d03;
   --bs-border-color: #495057;
@@ -19889,18 +19889,9 @@ hr::before {
   background-color: #ff9c7a;
 }
 
-.reflected-text {
-  position: relative;
-  font-size: 2rem;
-}
-.reflected-text:before {
-  content: attr(data-text);
-  transform: rotateX(180deg) skew(-45deg) scaleY(0.5) translate(10px, -25px);
-  opacity: 0.55;
-  transform-origin: 0 0;
-  top: 100%;
-  left: 0;
-  position: absolute;
+p::selection {
+  color: #6610f2;
+  background-color: #ff9c7a;
 }
 
 @media only screen and (min-width: 1025px) and (max-width: 1260px) {
@@ -20155,6 +20146,41 @@ nav ul li:nth-child(4) a {
 
 nav ul li:nth-child(5) a {
   color: #dda9a9;
+}
+
+.marquee {
+  width: 100%;
+  border: 1px solid red;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee span {
+  display: inline-block;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100vw);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.reflected-text {
+  position: relative;
+  font-size: 2rem;
+}
+.reflected-text:before {
+  content: attr(data-text);
+  transform: rotateX(180deg) skew(-45deg) scaleY(0.5) translate(10px, -25px);
+  opacity: 0.55;
+  transform-origin: 0 0;
+  top: 100%;
+  left: 0;
+  position: absolute;
 }
 
 @media print {
