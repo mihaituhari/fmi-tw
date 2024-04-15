@@ -278,15 +278,21 @@ p::selection
   grid-template-columns: repeat(3, 1fr)
   grid-gap: 0
   width: 100%
+  counter-reset: greek-letter
 
   figure
       background-color: black
       position: relative
+      counter-increment: greek-letter
 
       figcaption
         position: absolute
         bottom: 10px
         right: 10px
+
+      figcaption::before
+        color: $accent-color
+        content: counter(greek-letter, lower-greek) ". "
 
       img
         width: 100%

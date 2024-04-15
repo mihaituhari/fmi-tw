@@ -19899,15 +19899,21 @@ p::selection {
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 0;
   width: 100%;
+  counter-reset: greek-letter;
 }
 .gallery-grid figure {
   background-color: black;
   position: relative;
+  counter-increment: greek-letter;
 }
 .gallery-grid figure figcaption {
   position: absolute;
   bottom: 10px;
   right: 10px;
+}
+.gallery-grid figure figcaption::before {
+  color: #ff5b4f;
+  content: counter(greek-letter, lower-greek) ". ";
 }
 .gallery-grid figure img {
   width: 100%;

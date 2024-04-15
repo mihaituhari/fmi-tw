@@ -6,7 +6,7 @@
                 <source srcset="<%= images[i].cale_fisier ;%>" media="(min-width: 400px)">
                 <img title="<%= images[i].text_descriere ;%>" src="<%= images[i].cale_fisier ;%>" alt="<%= images[i].alt || images[i].titlu ;%>">
             </picture>
-            <figcaption><%= String.fromCharCode(945 + i) ;%>. <%= images[i].text_descriere ;%></figcaption>
+            <figcaption><%= images[i].text_descriere ;%></figcaption>
         </figure>
         <figure></figure>
     <% } %>
