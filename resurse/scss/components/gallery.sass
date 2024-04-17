@@ -19,10 +19,11 @@
       right: 10px
       transform-origin: center center
       transition: transform 1.1s
-      text-shadow: 2px 2px 2px white
+      color: $accent-color
+      text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white
 
     figcaption::before
-      color: $accent-color
+      color: $secondary-color
       content: counter(greek-letter, lower-greek) ". "
 
     img
