@@ -2,6 +2,25 @@
   "cale_baza": "/resurse/images/galerie",
   "imagini": [
     {
+      "cale_fisier": "teatru-modern.jpg",
+      "titlu": "Teatru modern",
+      "alt": "teatru modern",
+      "text_descriere": "Teatru modern",
+      "luni": [
+        "ianuarie",
+        "februarie",
+        "martie",
+        "aprilie",
+        "mai",
+        "iunie"
+      ],
+      "copyright": {
+        "autor": "Alan Cleaver",
+        "sursa": "https://creativecommons.org/licenses/by/2.0/?ref=openverse",
+        "licenta": "CC BY 2.0"
+      }
+    },
+    {
       "cale_fisier": "chitara.png",
       "titlu": "Chitara",
       "alt": "muzica la chitara",
