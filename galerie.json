@@ -1,5 +1,5 @@
 {
-  "cale_baza": "/resurse/images/galerie",
+  "cale_baza": "resurse/images/galerie",
   "imagini": [
     {
       "cale_fisier": "teatru-modern.jpg",

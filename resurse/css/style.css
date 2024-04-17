@@ -20035,6 +20035,7 @@ nav ul li ul {
   width: 100%;
   left: 0;
   height: 0;
+  z-index: 10;
   transform: scaleY(0);
   transform-origin: top;
   transition: all 0.5s ease;
