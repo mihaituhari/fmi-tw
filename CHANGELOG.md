@@ -8,6 +8,7 @@ v5.0.0-scss-bootstrap-efecte / TBA
 * Efect text reflectat pe `/despre` (0.15)
 * Efect marquee orizontal pe `/despre` (0.05)
 * Efect aspect text selectat (0.025)
+* Galerie statica (0.35)
 
 v4.0.0-node / 2024-04-03 / 0.6 pct
 ==================

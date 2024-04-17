@@ -33,7 +33,6 @@ function getGalleryImages() {
       }).
       slice(0, 12); // Limitare la 12 imagini
 
-  console.log(filteredImages);
   return filteredImages;
 }
 
