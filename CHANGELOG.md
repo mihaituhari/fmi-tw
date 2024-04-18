@@ -1,4 +1,4 @@
-v5.0.0-scss-bootstrap-efecte / TBA
+v5.0.0-scss-bootstrap-efecte / 1,025 pct
 ==================
 * Pus pe Github (0.05)
 * Compilare automata SCSS (0.25)
@@ -42,3 +42,6 @@ v1.0.0-etapa-1 / 2024-03-17 / 0.55 pct
 v0.0.0-etapa-0-cerinte / 2024-03-14 / 0.3 pct
 ==================
 * Add project details (0.3)
+
+-----
+Total 3.3 pct
