@@ -40,4 +40,12 @@ $container-max-widths: (
 
 $code-color: #dc3545;
 
+:root {
+    --background: #fff;
+}
+
+:root[data-theme="dark"] {
+    --background: #000;
+}
+
 @import "bootstrap";

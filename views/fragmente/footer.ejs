@@ -2,7 +2,11 @@
     <div class="banner">Acesta este un proiect scolar</div>
     <section>
         <div>
-            <a href="index.html#home">Acasă</a>
+            <a href="index.html#home">Acasă</a><br><br>
+
+            <button id="theme-toggle">
+                <i class="fas fa-sun"></i>
+            </button>
         </div>
         <address>
             <p>Informații de contact:</p>
@@ -16,8 +20,31 @@
 
         <small>&copy;
             <time datetime="2024-03-27">26 Februarie 2024</time>
-            Eventz! Toate drepturile rezervate.</small>
+            Eventz! Toate drepturile rezervate.
+        </small>
     </section>
 
     <a id="link-top" title="Mergi sus" href="#intro"></a>
 </footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var themeToggle = document.getElementById('theme-toggle');
+
+    let savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      themeToggle.innerHTML = savedTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    }
+
+    themeToggle.addEventListener('click', function() {
+      let currentTheme = document.documentElement.getAttribute('data-theme');
+      let newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+
+      themeToggle.innerHTML = newTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    });
+  });
+</script>

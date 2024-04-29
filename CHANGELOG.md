@@ -2,6 +2,7 @@ v6.0.0-db / TBA pct
 ==================
 * Instalare si integrare PostgreSQL (0)
 * DB afisare + sortare/filtrare/calculare (1.2p)
+* Light/dark theme - buton in footer (0.2p)
 * Bonus 9 - event image carousel Smiley (0.5p)
 * Bonus 11 - modal detalii eveniment (0.4p)
 
