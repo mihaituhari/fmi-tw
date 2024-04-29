@@ -7,13 +7,29 @@
 <body>
 
 <%- include('../fragmente/header.ejs') %>
-
 <main>
     <section>
         <h2>Evenimente</h2>
+        <div class="row evenimente">
+            <% events.forEach(event => { %>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= event.nume %> #<%= event.id %>
+                                <%- include('../fragmente/icon_categorie.ejs', {categorie: event.categorie_1}) %>
+                            </h5>
+                            <ul>
+                                <li><span class="text-secondary fw-bold">Pret:</span> <%= event.pret %> RON</li>
+                                <li><span class="text-secondary fw-bold">Data:</span> <%= new Date(event.data).toLocaleDateString('ro-RO') %></li>
+                            </ul>
+                            <a href="/eveniment/<%= event.id %>" class="btn btn-secondary">Detalii eveniment</a>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
     </section>
-
-    <%- include('../fragmente/galerie.ejs', {images: galleryImages}) %>
 </main>
 
 <%- include('../fragmente/footer.ejs') %>

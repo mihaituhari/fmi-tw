@@ -19894,6 +19894,10 @@ p::selection {
   background-color: #ff9c7a;
 }
 
+.evenimente > div {
+  margin-bottom: 15px;
+}
+
 @media only screen and (min-width: 1025px) and (max-width: 1260px) {
   body {
     font-size: 0.9rem;

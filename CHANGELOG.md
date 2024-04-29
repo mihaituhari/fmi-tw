@@ -1,3 +1,8 @@
+v6.0.0-db / TBA pct
+==================
+* PostgreSQL
+
+
 v5.0.0-scss-bootstrap-efecte / 1,025 pct
 ==================
 * Pus pe Github (0.05)

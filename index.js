@@ -2,6 +2,20 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const sass = require('sass');
+const {Client} = require('pg');
+
+/**
+ * Conectare la DB.
+ */
+const client = new Client({
+  user: 'mihai',
+  host: 'localhost',
+  database: 'tw',
+  password: '',
+  port: 5432,
+});
+
+client.connect();
 
 let obGlobal = {
   obErori: null,
@@ -14,7 +28,7 @@ const app = express();
 const port = 8081;
 
 const {initErori, afisareEroare} = require('./errorManagement');
-const {getGalleryImages} = require('./functions');
+const {getGalleryImages, getEvents} = require('./functions');
 
 console.log(`\n🚀 Serverul porneste ...`);
 console.log('→ Folderul fisierului [__dirname]: ' + __dirname);
@@ -119,6 +133,16 @@ app.get('/favicon.ico', (req, res) => {
   res.sendFile(path.join(__dirname, 'resurse', 'ico', 'favicon.ico'));
 });
 
+app.get('/evenimente', async (req, res) => {
+  try {
+    let events = await getEvents(client);
+    res.render('pagini/evenimente', {events: events});
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server error');
+  }
+});
+
 app.get(['/', '/index', '/home', '/*'], (req, res) => {
   let pagina;
   let userIP = req.ip;
@@ -143,6 +167,8 @@ app.get(['/', '/index', '/home', '/*'], (req, res) => {
     }
   });
 });
+
+
 
 /**
  * Boot.
