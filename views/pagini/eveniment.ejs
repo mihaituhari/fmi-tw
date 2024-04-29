@@ -9,58 +9,7 @@
 <%- include('../fragmente/header.ejs') %>
 <main>
     <section>
-        <h2>
-            <a href="/evenimente">Evenimente</a> /
-            <a href="/evenimente/<%= event.categorie_1%>"><%= obGlobal.categorii[event.categorie_1] %></a> /
-            <span class="text-secondary"><%= event.nume %> #<%= event.id %></span>
-            <%- include('../fragmente/icon_categorie.ejs', {categorie: event.categorie_1}) %>
-        </h2>
-        <div class="row evenimente">
-            <article class="col-md-12 <%= event.categorie_1 %>" id="elem_<%= event.id %>">
-                <div class="row">
-                    <div class="col-md-7">
-                        <table>
-                            <tr>
-                                <td>Locatie:</td>
-                                <td><%= event.locatie %></td>
-                            </tr>
-                            <tr>
-                                <td>Data:</td>
-                                <td><time datetime="<%= event.data %>"><%= new Date(event.data).toLocaleDateString('ro-RO', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'}) %></time></td>
-                            </tr>
-                            <tr>
-                                <td>Pret:</td>
-                                <td><%= event.pret %> RON <small>(Studenti: <%= event.pret_studenti %> RON)</small></td>
-                            </tr>
-                            <tr>
-                                <td>Adult-only 🔞</td>
-                                <td><%= event.adulti ? 'Da' : 'Nu' %></td>
-                            </tr>
-                            <tr>
-                                <td>Subcategorie:</td>
-                                <td><%= event.categorie_2 %></td>
-                            </tr>
-                            <tr>
-                                <td>Tag-uri:</td>
-                                <td><%= event.tags %></td>
-                            </tr>
-                        </table>
-
-                        <p>
-                            <%= event.descriere %>
-                        </p>
-                        <p>
-                            <strong>Categorie:</strong> <a href="/evenimente/<%= event.categorie_1%>"><%= obGlobal.categorii[event.categorie_1] %></a>
-                        </p>
-                    </div>
-                    <div class="col-md-5">
-                        <a href="/eveniment/<%= event.id %>">
-                            <img src="<%= event.imagine %>" alt="<%= event.nume %>">
-                        </a>
-                    </div>
-                </div>
-            </article>
-        </div>
+        <%- include('../fragmente/eveniment.ejs') %>
     </section>
 </main>
 

@@ -19895,7 +19895,13 @@ p::selection {
 }
 
 .evenimente > article {
-  margin-bottom: 30px;
+  margin: 20px 0;
+}
+.evenimente > article .event-card {
+  border-radius: 15px;
+  box-shadow: 0 0 10px 0 #dee2e6;
+  padding: 15px;
+  cursor: pointer;
 }
 .evenimente > article p {
   padding: 5px 0;

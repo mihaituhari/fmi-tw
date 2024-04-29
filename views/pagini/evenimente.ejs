@@ -16,48 +16,50 @@
         <div class="row evenimente">
             <% events.forEach(event => { %>
                 <article class="col-md-4 <%= event.categorie_1 %>" id="elem_<%= event.id %>">
-                    <h3 class="card-title">
-                        <%= event.nume %>
-                        <%- include('../fragmente/icon_categorie.ejs', {categorie: event.categorie_1}) %>
-                    </h3>
+                    <div class="col-md-12 event-card">
+                        <h3 class="card-title">
+                            <%= event.nume %>
+                            <%- include('../fragmente/icon_categorie.ejs', {categorie: event.categorie_1}) %>
+                        </h3>
 
-                    <div class="row">
-                        <div class="col-md-7">
-                            <table>
-                                <tr>
-                                    <td>Locatie:</td>
-                                    <td><%= event.locatie %></td>
-                                </tr>
-                                <tr>
-                                    <td>Data:</td>
-                                    <td><time datetime="<%= event.data %>"><%= new Date(event.data).toLocaleDateString('ro-RO', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'}) %></time></td>
-                                </tr>
-                                <tr>
-                                    <td>Pret:</td>
-                                    <td><%= event.pret %> RON <small>(Studenti: <%= event.pret_studenti %> RON)</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Adult-only 🔞</td>
-                                    <td><%= event.adulti ? 'Da' : 'Nu' %></td>
-                                </tr>
-                                <tr>
-                                    <td>Tag-uri:</td>
-                                    <td><%= event.tags %></td>
-                                </tr>
-                            </table>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <table>
+                                    <tr>
+                                        <td>Locatie:</td>
+                                        <td><%= event.locatie %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Data:</td>
+                                        <td><time datetime="<%= event.data %>"><%= new Date(event.data).toLocaleDateString('ro-RO', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'}) %></time></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Pret:</td>
+                                        <td><%= event.pret %> RON <small>(Studenti: <%= event.pret_studenti %> RON)</small></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Adult-only 🔞</td>
+                                        <td><%= event.adulti ? 'Da' : 'Nu' %></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tag-uri:</td>
+                                        <td><%= event.tags %></td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-md-5">
+                                <a href="/eveniment/<%= event.id %>">
+                                    <img src="<%= event.imagine %>" alt="<%= event.nume %>">
+                                </a>
+                            </div>
                         </div>
-                        <div class="col-md-5">
-                            <a href="/eveniment/<%= event.id %>">
-                                <img src="<%= event.imagine %>" alt="<%= event.nume %>">
-                            </a>
-                        </div>
+                        <p>
+                            <%= event.descriere %>. <a href="/eveniment/<%= event.id %>">Detalii &raquo;</a>
+                        </p>
+                        <p>
+                            <strong>Categorie:</strong> <a href="/evenimente/<%= event.categorie_1%>"><%= obGlobal.categorii[event.categorie_1] %></a>
+                        </p>
                     </div>
-                    <p>
-                        <%= event.descriere %>. <a href="/eveniment/<%= event.id %>">Detalii &raquo;</a>
-                    </p>
-                    <p>
-                        <strong>Categorie:</strong> <a href="/evenimente/<%= event.categorie_1%>"><%= obGlobal.categorii[event.categorie_1] %></a>
-                    </p>
                 </article>
             <% }); %>
         </div>
@@ -65,6 +67,36 @@
 </main>
 
 <%- include('../fragmente/footer.ejs') %>
+
+<div class="modal fade" id="modalEveniment" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel">Detalii eveniment</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Închide</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.event-card').forEach(card => {
+      card.addEventListener('click', () => {
+        let eventId = card.parentElement.id.split('_')[1];
+
+        fetch(`/eveniment/${eventId}?modal=1`).then(response => response.text()).then(html => {
+          document.querySelector('#modalBody').innerHTML = html;
+
+          let modal = new bootstrap.Modal(document.getElementById('modalEveniment'));
+          modal.show();
+        }).catch(error => console.error('A apărut o eroare:', error));
+      });
+    });
+</script>
 
 </body>
 </html>

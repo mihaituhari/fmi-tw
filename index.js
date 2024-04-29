@@ -161,12 +161,15 @@ app.get('/evenimente/:categorie?', async (req, res) => {
 
 app.get('/eveniment/:id', async (req, res) => {
   let id = req.params.id;
+  let modal = req.query.modal === '1';
+
+  let view = modal ? 'fragmente/eveniment' : 'pagini/eveniment';
 
   try {
     let event = await getEventById(client, id);
 
     if (event) {
-      res.render('pagini/eveniment', {event: event});
+      res.render(view, {event: event, modal: modal});
     } else {
       afisareEroare(obGlobal, res, 404);
     }
