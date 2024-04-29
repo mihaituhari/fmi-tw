@@ -33,7 +33,7 @@ const app = express();
 const port = 8081;
 
 const {initErori, afisareEroare} = require('./errorManagement');
-const {getGalleryImages, getEvents} = require('./functions');
+const {getGalleryImages, getEvents, getEventById} = require('./functions');
 
 console.log(`\n🚀 Serverul porneste ...`);
 console.log('→ Folderul fisierului [__dirname]: ' + __dirname);
@@ -154,6 +154,22 @@ app.get('/evenimente/:categorie?', async (req, res) => {
   try {
     let events = await getEvents(client, categorie_1);
     res.render('pagini/evenimente', {events: events, categorie_1: categorie_1});
+  } catch (err) {
+    afisareEroare(obGlobal, res, 500);
+  }
+});
+
+app.get('/eveniment/:id', async (req, res) => {
+  let id = req.params.id;
+
+  try {
+    let event = await getEventById(client, id);
+
+    if (event) {
+      res.render('pagini/eveniment', {event: event});
+    } else {
+      afisareEroare(obGlobal, res, 404);
+    }
   } catch (err) {
     afisareEroare(obGlobal, res, 500);
   }

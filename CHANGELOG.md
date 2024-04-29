@@ -1,7 +1,7 @@
 v6.0.0-db / TBA pct
 ==================
-* PostgreSQL
-
+* Instalare si integrare PostgreSQL (0)
+* DB afisare + sortare/filtrare/calculare (1.2p)
 
 v5.0.0-scss-bootstrap-efecte / 1,025 pct
 ==================

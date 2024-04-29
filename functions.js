@@ -58,4 +58,19 @@ function getEvents(client, categorie_1) {
   });
 }
 
-module.exports = {getGalleryImages, getEvents};
+function getEventById(client, id) {
+  return new Promise((resolve, reject) => {
+    const query = 'SELECT * FROM evenimente WHERE id = $1';
+    const params = [id];
+
+    client.query(query, params, (err, res) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(res.rows[0]);
+      }
+    });
+  });
+}
+
+module.exports = {getGalleryImages, getEvents, getEventById};
