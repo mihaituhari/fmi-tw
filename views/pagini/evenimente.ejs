@@ -42,6 +42,13 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-3 form-group">
+                    <label>Sortare:</label>
+                    <div>
+                        <button id="sortAsc" class="btn btn-secondary">Ascendent</button>
+                        <button id="sortDesc" class="btn btn-secondary">Descendent</button>
+                    </div>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-12 mt-2">
@@ -82,8 +89,12 @@
                                     </tr>
                                     <tr>
                                         <td>Pret:</td>
-                                        <td><%= event.pret %> RON <small>(Studenti: <%= event.pret_studenti %>
-                                                RON)</small></td>
+                                        <td>
+                                            <%= event.pret %> RON
+                                            <small>(Studenti: <%= event.pret_studenti %> RON)</small>
+
+                                            <sup>raport: <%= (event.pret_studenti / event.pret).toFixed(2) %></sup>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Adult-only 🔞</td>
@@ -244,6 +255,58 @@
       }, 2000);
     }
   });
+
+  // Sortare
+  document.addEventListener('DOMContentLoaded', function() {
+    let sortAscButton = document.getElementById('sortAsc');
+    let sortDescButton = document.getElementById('sortDesc');
+
+    sortAscButton.addEventListener('click', function() {
+      sortEvents('asc');
+    });
+
+    sortDescButton.addEventListener('click', function() {
+      sortEvents('desc');
+    });
+
+    function sortEvents(order) {
+      // Selectam containerul evenimentelor
+      let container = document.querySelector('.evenimente');
+
+      // Sortam evenimentele (implicit ascendent)
+      events.sort((a, b) => {
+        let ratioA = a.pret_studenti / a.pret;
+        let ratioB = b.pret_studenti / b.pret;
+
+        if (ratioA < ratioB) {
+          return -1;
+        } else if (ratioA > ratioB) {
+          return 1;
+        } else {
+          // Daca rapoartele sunt egale, sortam dupa subcategorie
+          if (a.categorie_2 < b.categorie_2) {
+            return -1;
+          } else if (a.categorie_2 > b.categorie_2) {
+            return 1;
+          } else {
+            return 0;
+          }
+        }
+      });
+
+      // Dam flip la array pentru sortarea descendenta
+      if (order === 'desc') {
+        events.reverse();
+      }
+
+      // Parcurgem evenimentele sortate si le mutam in container in ordinea noua
+      events.forEach(event => {
+        let eventElement = document.getElementById('elem_' + event.id);
+        container.appendChild(eventElement);
+      });
+    }
+  });
+
 </script>
 
 </body>
