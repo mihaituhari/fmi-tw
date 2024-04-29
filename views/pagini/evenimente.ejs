@@ -232,11 +232,7 @@
 
       // Cream div-ul
       let div = document.createElement('div');
-      div.style.position = 'fixed';
-      div.style.bottom = '10px';
-      div.style.right = '10px';
-      div.style.padding = '10px';
-      div.style.backgroundColor = 'red';
+      div.classList.add('calcul-evenimente');
       div.textContent = 'Media preturilor: ' + average.toFixed(2) + ' RON';
 
       // Adaugam div-ul la document

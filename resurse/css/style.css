@@ -19921,6 +19921,17 @@ p::selection {
   width: 100%;
 }
 
+.calcul-evenimente {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  background: #ff5b4f;
+  color: #f5f1f1;
+  box-shadow: 0 0 10px 0 #dee2e6;
+  border-radius: 15px;
+}
+
 #filters {
   border-radius: 15px;
   box-shadow: 0 0 10px 0 #dee2e6;
