@@ -48,7 +48,9 @@ function getEvents(client, categorie_1) {
 
     query += ' ORDER BY data DESC';
 
+
     client.query(query, params, (err, res) => {
+      console.log('aaaa');
       if (err) {
         reject(err);
       } else {
@@ -58,6 +60,8 @@ function getEvents(client, categorie_1) {
           for (let prop in row) {
             event[prop] = row[prop];
           }
+
+          event.imagine = event.imagine.split(',');
 
           return event;
         });
@@ -77,7 +81,10 @@ function getEventById(client, id) {
       if (err) {
         reject(err);
       } else {
-        resolve(res.rows[0]);
+        let event = res.rows[0];
+        event.imagine = event.imagine.split(',');
+
+        resolve(event);
       }
     });
   });

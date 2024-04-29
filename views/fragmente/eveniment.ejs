@@ -1,6 +1,6 @@
 <h2>
     <a href="/evenimente">Evenimente</a> /
-    <a href="/evenimente/<%= event.categorie_1%>"><%= obGlobal.categorii[event.categorie_1] %></a> /
+    <a href="/evenimente/<%= event.categorie_1 %>"><%= obGlobal.categorii[event.categorie_1] %></a> /
     <span class="text-secondary"><%= event.nume %></span>
     <%- include('../fragmente/icon_categorie.ejs', {categorie: event.categorie_1}) %>
 </h2>
@@ -15,7 +15,10 @@
                     </tr>
                     <tr>
                         <td>Data:</td>
-                        <td><time datetime="<%= event.data %>"><%= new Date(event.data).toLocaleDateString('ro-RO', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'}) %></time></td>
+                        <td>
+                            <time datetime="<%= event.data %>"><%= new Date(event.data).toLocaleDateString('ro-RO',
+                                        {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'}) %></time>
+                        </td>
                     </tr>
                     <tr>
                         <td>Pret:</td>
@@ -39,14 +42,41 @@
                     <%= event.descriere %>
                 </p>
                 <p>
-                    <strong>Categorie:</strong> <a href="/evenimente/<%= event.categorie_1%>"><%= obGlobal.categorii[event.categorie_1] %></a>
+                    <strong>Categorie:</strong>
+                    <a href="/evenimente/<%= event.categorie_1 %>"><%= obGlobal.categorii[event.categorie_1] %></a>
                 </p>
             </div>
             <div class="<%= modal ? 'col-md-12' : 'col-md-5' %>">
-                <a href="/eveniment/<%= event.id %>">
-                    <img src="<%= event.imagine %>" alt="<%= event.nume %>">
-                </a>
+                <% if(event.imagine.length > 1) { %>
+                    <div id="eventCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <% event.imagine.forEach((img, index) => { %>
+                                <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                                    <img class="d-block w-100" src="<%= img %>" alt="<%= event.nume %>">
+                                </div>
+                            <% }); %>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#eventCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#eventCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                <% } else { %>
+                    <img src="<%= event.imagine[0] %>" alt="<%= event.nume %>">
+                <% } %>
             </div>
         </div>
     </article>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    let carouselElement = document.querySelector('#eventCarousel');
+    new bootstrap.Carousel(carouselElement, {interval: 1500});
+  });
+</script>
+

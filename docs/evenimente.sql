@@ -22,7 +22,7 @@ DELETE FROM evenimente;
 
 -- Muzica
 INSERT INTO evenimente (id, nume, descriere, imagine, categorie_1, categorie_2, pret, pret_studenti, data, locatie, tags, adulti)
-VALUES (1, 'Concert Smiley', 'Smiley live la Arenele Romane', '/resurse/images/evenimente/1-smiley.webp', 'muzica', 'pop', 150.00, 120.00, '2024-05-20', 'Bucuresti', 'concert,pop,smiley', TRUE),
+VALUES (1, 'Concert Smiley', 'Smiley live la Arenele Romane', '/resurse/images/evenimente/1-smiley.webp,/resurse/images/evenimente/1-smiley-b.webp,/resurse/images/evenimente/1-smiley-c.webp', 'muzica', 'pop', 150.00, 120.00, '2024-05-20', 'Bucuresti', 'concert,pop,smiley', TRUE),
        (2, 'Jazz in the Park', 'Festival de jazz în Parcul Central', '/resurse/images/evenimente/2-jazz-park.webp', 'muzica', 'jazz', 90.00, 70.00, '2024-06-15', 'Bucuresti', 'jazz,festival', FALSE),
        (3, 'Rock the City', 'Festival de rock în centrul orașului', '/resurse/images/evenimente/3-rock-city.webp', 'muzica', 'rock', 200.00, 160.00, '2024-07-22', 'Bucuresti', 'rock,festival', TRUE),
        (4, 'Folk Fest', 'Festival de muzică folk la malul mării', '/resurse/images/evenimente/4-folk-fest.webp', 'muzica', 'folk', 120.00, 100.00, '2024-08-05', 'Iasi', 'folk,seaside', FALSE),
