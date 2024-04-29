@@ -19942,6 +19942,12 @@ p::selection {
   width: 100%;
   padding: 10px;
 }
+#filters .filter-buttons {
+  margin-top: 20px;
+}
+#filters .filter-buttons button i {
+  margin-right: 5px;
+}
 
 @media only screen and (min-width: 1025px) and (max-width: 1260px) {
   body {
@@ -19973,6 +19979,10 @@ p::selection {
   }
   table {
     border-spacing: 0;
+  }
+  .hide-xs,
+  .filter-buttons span {
+    display: none;
   }
 }
 .d-flex {

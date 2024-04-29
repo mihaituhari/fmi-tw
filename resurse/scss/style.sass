@@ -309,6 +309,12 @@ p::selection
   width: 100%
   padding: 10px
 
+  .filter-buttons
+    margin-top: 20px
+
+    button i
+        margin-right: 5px
+
 // Medium screen
 @media only screen and (min-width: $breakpoint-small + 1) and (max-width: $breakpoint-medium)
   body
@@ -341,6 +347,10 @@ p::selection
 
   table
     border-spacing: 0
+
+  .hide-xs,
+  .filter-buttons span
+    display: none
 
 
 @import "components/helpers"
