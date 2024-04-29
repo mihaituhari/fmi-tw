@@ -87,7 +87,7 @@ VALUES (21, 'Sculpture in the Park', 'Expoziție de sculptură în aer liber', '
        (27, 'Classical Music and Visual Arts', 'Serată de muzică clasică acompaniată de artă vizuală',
         '/resurse/images/evenimente/27-classical-music-art.webp', 'arta', 'multimedia', 70.00, 55.00, '2024-10-03', 'purple',
         'classical music,visual arts', TRUE),
-       (28, 'Interactive Art Workshop', 'Atelier interactiv de creație artistică', '/resurse/images/evenimente/28-art-workshop.webp',
+       (28, 'Interactive Art Workshop', 'Atelier interactiv de creație artistică', '/resurse/images/evenimente/28-workshop.webp',
         'arta', 'workshop', 25.00, 20.00, '2024-11-15', 'blue', 'workshop,interactive', TRUE),
        (29, 'Theatre Arts Festival', 'Festival de teatru cu spectacole inovative', '/resurse/images/evenimente/29-theatre.webp',
         'arta', 'theatre', 55.00, 45.00, '2024-12-05', 'red', 'theatre,festival', TRUE),

@@ -12,21 +12,25 @@
         <h2>Evenimente</h2>
         <div class="row evenimente">
             <% events.forEach(event => { %>
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                <%= event.nume %> #<%= event.id %>
-                                <%- include('../fragmente/icon_categorie.ejs', {categorie: event.categorie_1}) %>
-                            </h5>
-                            <ul>
-                                <li><span class="text-secondary fw-bold">Pret:</span> <%= event.pret %> RON</li>
-                                <li><span class="text-secondary fw-bold">Data:</span> <%= new Date(event.data).toLocaleDateString('ro-RO') %></li>
-                            </ul>
-                            <a href="/eveniment/<%= event.id %>" class="btn btn-secondary">Detalii eveniment</a>
-                        </div>
-                    </div>
-                </div>
+                <article class="col-md-4 <%= event.categorie_1 %>" id="elem_<%= event.id %>">
+                    <h3 class="card-title">
+                        <%= event.nume %> #<%= event.id %>
+                        <%- include('../fragmente/icon_categorie.ejs', {categorie: event.categorie_1}) %>
+                    </h3>
+                    <table>
+                        <tr>
+                            <td>Pret:</td>
+                            <td><%= event.pret %> RON</td>
+                        </tr>
+                        <tr>
+                            <td>Data:</td>
+                            <td><time datetime="<%= event.data %>"><%= new Date(event.data).toLocaleDateString('ro-RO', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}) %></time></td>
+                        </tr>
+                        <!-- Adăugați aici alte rânduri pentru caracteristicile rămase -->
+                    </table>
+                    <p><%= event.descriere %></p>
+                    <img src="<%= event.imagine %>" alt="<%= event.nume %>">
+                </article>
             <% }); %>
         </div>
     </section>

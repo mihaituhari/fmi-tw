@@ -38,7 +38,7 @@ function getGalleryImages() {
 
 function getEvents(client) {
   return new Promise((resolve, reject) => {
-    client.query('SELECT * FROM evenimente WHERE active = 1 ORDER BY data DESC', (err, res) => {
+    client.query('SELECT * FROM evenimente ORDER BY data DESC', (err, res) => {
       if (err) {
         reject(err);
       } else {

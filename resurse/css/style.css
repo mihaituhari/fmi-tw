@@ -19894,8 +19894,8 @@ p::selection {
   background-color: #ff9c7a;
 }
 
-.evenimente > div {
-  margin-bottom: 15px;
+.evenimente > article {
+  margin-bottom: 50px;
 }
 
 @media only screen and (min-width: 1025px) and (max-width: 1260px) {
