@@ -14,7 +14,7 @@
             <span class="text-secondary"><%= categorie_1 ? obGlobal.categorii[categorie_1] : 'Toate' %></span>
         </h2>
 
-        <div id="filters">
+        <div id="filters" class="bg-white">
             <div class="row">
                 <div class="col-md-3 form-group">
                     <label for="eventName">Nume eveniment:</label>
@@ -55,7 +55,7 @@
         <div class="row evenimente">
             <% events.forEach(event => { %>
                 <article class="col-md-4 <%= event.categorie_1 %>" id="elem_<%= event.id %>">
-                    <div class="col-md-12 event-card">
+                    <div class="col-md-12 event-card bg-white">
                         <h3 class="card-title">
                             <%= event.nume %>
                             <%- include('../fragmente/icon_categorie.ejs', {categorie: event.categorie_1}) %>
