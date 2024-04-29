@@ -183,13 +183,13 @@
     resetButton.addEventListener('click', resetEvents);
 
     function filterEvents() {
-      let searchName = nameInput.value.toLowerCase();
+      let searchName = faraDiacritice(nameInput.value.toLowerCase());
       let filterStudentPrice = studentPriceInput.value;
       let filterAdults = document.querySelector('input[name="adulti"]:checked').value;
 
       // Filtram evenimentele
       let filteredEvents = events.filter(event => {
-        let name = event.nume.toLowerCase();
+        let name = event.nume_normalizat.toLowerCase();
 
         // Verificam daca evenimentul se potriveste cu filtrele
         let nameMatches = name.includes(searchName);
@@ -224,6 +224,25 @@
       document.querySelector('input[name="adulti"][value="all"]').checked = true;
 
       filterEvents();
+    }
+
+    function faraDiacritice(str) {
+      const diacritice = {
+        'ă': 'a',
+        'â': 'a',
+        'î': 'i',
+        'ș': 's',
+        'ț': 't',
+        'Ă': 'A',
+        'Â': 'A',
+        'Î': 'I',
+        'Ș': 'S',
+        'Ț': 'T',
+      };
+
+      return str.split('').map(function(char) {
+        return diacritice[char] || char;
+      }).join('');
     }
   });
 

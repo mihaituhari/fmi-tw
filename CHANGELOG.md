@@ -1,4 +1,4 @@
-v6.0.0-db / TBA / 2.45 pct
+v6.0.0-db / TBA / 2.5 pct
 ==================
 * Instalare si integrare PostgreSQL (0)
 * DB afisare + sortare/filtrare/calculare (1.2p)
@@ -6,6 +6,7 @@ v6.0.0-db / TBA / 2.45 pct
 * Bonus 2 - multiple themes (clown) (0.15p)
 * Bonus 9 - event image carousel Smiley (0.5p)
 * Bonus 11 - modal detalii eveniment (0.4p)
+* Stilizare butoane filtre (0.05p)
 
 v5.0.0-scss-bootstrap-efecte / 1.025 pct
 ==================
@@ -53,4 +54,4 @@ v0.0.0-etapa-0-cerinte / 2024-03-14 / 0.3 pct
 * Add project details (0.3)
 
 -----
-Total 5,75 pct
+Total 5,8 pct

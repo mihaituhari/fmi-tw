@@ -48,9 +48,7 @@ function getEvents(client, categorie_1) {
 
     query += ' ORDER BY data DESC';
 
-
     client.query(query, params, (err, res) => {
-      console.log('aaaa');
       if (err) {
         reject(err);
       } else {
@@ -62,6 +60,7 @@ function getEvents(client, categorie_1) {
           }
 
           event.imagine = event.imagine.split(',');
+          event.nume_normalizat = faraDiacritice(event.nume.toLowerCase());
 
           return event;
         });
@@ -90,4 +89,23 @@ function getEventById(client, id) {
   });
 }
 
-module.exports = {getGalleryImages, getEvents, getEventById};
+function faraDiacritice(str) {
+  const diacritice = {
+    'ă': 'a',
+    'â': 'a',
+    'î': 'i',
+    'ș': 's',
+    'ț': 't',
+    'Ă': 'A',
+    'Â': 'A',
+    'Î': 'I',
+    'Ș': 'S',
+    'Ț': 'T',
+  };
+
+  return str.split('').map(function(char) {
+    return diacritice[char] || char;
+  }).join('');
+}
+
+module.exports = {getGalleryImages, getEvents, getEventById, faraDiacritice};
