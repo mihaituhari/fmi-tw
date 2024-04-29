@@ -4,9 +4,11 @@
         <div>
             <a href="index.html#home">Acasă</a><br><br>
 
-            <button id="theme-toggle">
-                <i class="fas fa-sun"></i>
-            </button>
+            <select id="theme-toggle">
+                <option value="light">☀️ Light</option>
+                <option value="dark">🌘 Dark</option>
+                <option value="clown">🤡 Clown</option>
+            </select>
         </div>
         <address>
             <p>Informații de contact:</p>
@@ -29,22 +31,19 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    var themeToggle = document.getElementById('theme-toggle');
+    let themeToggle = document.getElementById('theme-toggle');
 
     let savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
       document.documentElement.setAttribute('data-theme', savedTheme);
-      themeToggle.innerHTML = savedTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+      themeToggle.value = savedTheme;
     }
 
-    themeToggle.addEventListener('click', function() {
-      let currentTheme = document.documentElement.getAttribute('data-theme');
-      let newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    themeToggle.addEventListener('change', function() {
+      let newTheme = this.value;
 
       document.documentElement.setAttribute('data-theme', newTheme);
       localStorage.setItem('theme', newTheme);
-
-      themeToggle.innerHTML = newTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
     });
   });
 </script>

@@ -63,6 +63,10 @@ table {
   --background: #000;
 }
 
+:root[data-theme=clown] {
+  --background: hotpink;
+}
+
 /*!
  * Bootstrap  v5.3.3 (https://getbootstrap.com/)
  * Copyright 2011-2024 The Bootstrap Authors

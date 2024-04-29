@@ -48,4 +48,8 @@ $code-color: #dc3545;
     --background: #000;
 }
 
+:root[data-theme="clown"] {
+    --background: hotpink;
+}
+
 @import "bootstrap";
