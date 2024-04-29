@@ -9,7 +9,10 @@
 <%- include('../fragmente/header.ejs') %>
 <main>
     <section>
-        <h2>Evenimente</h2>
+        <h2>
+            Evenimente /
+            <span class="text-secondary"><%= categorie_1 ? obGlobal.categorii[categorie_1] : 'Toate' %></span>
+        </h2>
         <div class="row evenimente">
             <% events.forEach(event => { %>
                 <article class="col-md-4 <%= event.categorie_1 %>" id="elem_<%= event.id %>">
@@ -17,19 +20,42 @@
                         <%= event.nume %> #<%= event.id %>
                         <%- include('../fragmente/icon_categorie.ejs', {categorie: event.categorie_1}) %>
                     </h3>
-                    <table>
-                        <tr>
-                            <td>Pret:</td>
-                            <td><%= event.pret %> RON</td>
-                        </tr>
-                        <tr>
-                            <td>Data:</td>
-                            <td><time datetime="<%= event.data %>"><%= new Date(event.data).toLocaleDateString('ro-RO', {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}) %></time></td>
-                        </tr>
-                        <!-- Adăugați aici alte rânduri pentru caracteristicile rămase -->
-                    </table>
-                    <p><%= event.descriere %></p>
-                    <img src="<%= event.imagine %>" alt="<%= event.nume %>">
+
+                    <div class="row">
+                        <div class="col-md-7">
+                            <table>
+                                <tr>
+                                    <td>Locatie:</td>
+                                    <td><%= event.locatie %></td>
+                                </tr>
+                                <tr>
+                                    <td>Data:</td>
+                                    <td><time datetime="<%= event.data %>"><%= new Date(event.data).toLocaleDateString('ro-RO', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'}) %></time></td>
+                                </tr>
+                                <tr>
+                                    <td>Pret:</td>
+                                    <td><%= event.pret %> RON <small>(Studenti: <%= event.pret_studenti %> RON)</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Adult-only 🔞</td>
+                                    <td><%= event.adulti ? 'Da' : 'Nu' %></td>
+                                </tr>
+                                <tr>
+                                    <td>Tag-uri:</td>
+                                    <td><%= event.tags %></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-5">
+                            <img src="<%= event.imagine %>" alt="<%= event.nume %>">
+                        </div>
+                    </div>
+                    <p>
+                        <%= event.descriere %>
+                    </p>
+                    <p>
+                        <strong>Categorie:</strong> <%= event.categorie_1 %>
+                    </p>
                 </article>
             <% }); %>
         </div>

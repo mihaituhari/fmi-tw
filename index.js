@@ -22,6 +22,11 @@ let obGlobal = {
   folderScss: path.join(__dirname, 'resurse', 'scss'),
   folderCss: path.join(__dirname, 'resurse', 'css'),
   folderBackup: path.join(__dirname, 'backup'),
+  categorii: {
+    'muzica': 'Muzică',
+    'sport': 'Sport',
+    'arta': 'Artă',
+  },
 };
 
 const app = express();
@@ -126,6 +131,11 @@ app.use((req, res, next) => {
   }
 });
 
+app.use((req, res, next) => {
+  res.locals.obGlobal = obGlobal;
+  next();
+});
+
 /**
  * Routes.
  */
@@ -133,13 +143,19 @@ app.get('/favicon.ico', (req, res) => {
   res.sendFile(path.join(__dirname, 'resurse', 'ico', 'favicon.ico'));
 });
 
-app.get('/evenimente', async (req, res) => {
+app.get('/evenimente/:categorie?', async (req, res) => {
+  let categorie_1 = req.params.categorie;
+
+  if (categorie_1 && !obGlobal.categorii.hasOwnProperty(categorie_1)) {
+    afisareEroare(obGlobal, res, 404);
+    return;
+  }
+
   try {
-    let events = await getEvents(client);
-    res.render('pagini/evenimente', {events: events});
+    let events = await getEvents(client, categorie_1);
+    res.render('pagini/evenimente', {events: events, categorie_1: categorie_1});
   } catch (err) {
-    console.error(err);
-    res.status(500).send('Server error');
+    afisareEroare(obGlobal, res, 500);
   }
 });
 

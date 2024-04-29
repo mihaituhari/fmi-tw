@@ -36,9 +36,19 @@ function getGalleryImages() {
   return filteredImages;
 }
 
-function getEvents(client) {
+function getEvents(client, categorie_1) {
   return new Promise((resolve, reject) => {
-    client.query('SELECT * FROM evenimente ORDER BY data DESC', (err, res) => {
+    let query = 'SELECT * FROM evenimente';
+    let params = [];
+
+    if (categorie_1) {
+      query += ' WHERE categorie_1 = $1';
+      params.push(categorie_1);
+    }
+
+    query += ' ORDER BY data DESC';
+
+    client.query(query, params, (err, res) => {
       if (err) {
         reject(err);
       } else {

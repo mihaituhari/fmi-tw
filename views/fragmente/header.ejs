@@ -20,9 +20,14 @@
                 </a>
                 <ul>
                     <li><a href="/evenimente">Toate</a></li>
-                    <li><a href="/evenimente/arta">🎭 Arta</a></li>
-                    <li><a href="/evenimente/arta">🎶Muzica</a></li>
-                    <li><a href="/evenimente/sport">⚽️ Sport</a></li>
+                    <% for(let key in obGlobal.categorii) { %>
+                        <li>
+                            <a href="/evenimente/<%= key %>">
+                                <%- include('../fragmente/icon_categorie.ejs', {categorie: key}) %>
+                                &nbsp;<%= obGlobal.categorii[key] %>
+                            </a>
+                        </li>
+                    <% } %>
                 </ul>
             </li>
             <li>

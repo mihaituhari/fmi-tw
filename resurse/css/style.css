@@ -19895,7 +19895,15 @@ p::selection {
 }
 
 .evenimente > article {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+}
+.evenimente > article p {
+  padding: 5px 0;
+  margin: 5px 0;
+}
+.evenimente > article img {
+  margin-top: 12px;
+  width: 100%;
 }
 
 @media only screen and (min-width: 1025px) and (max-width: 1260px) {
