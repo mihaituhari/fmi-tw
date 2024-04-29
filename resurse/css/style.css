@@ -19912,6 +19912,13 @@ p::selection {
   width: 100%;
 }
 
+#filters {
+  border-radius: 15px;
+  box-shadow: 0 0 10px 0 #dee2e6;
+  width: 100%;
+  padding: 10px;
+}
+
 @media only screen and (min-width: 1025px) and (max-width: 1260px) {
   body {
     font-size: 0.9rem;

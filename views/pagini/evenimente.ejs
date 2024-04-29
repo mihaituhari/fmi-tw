@@ -13,6 +13,45 @@
             <a href="/evenimente">Evenimente</a> /
             <span class="text-secondary"><%= categorie_1 ? obGlobal.categorii[categorie_1] : 'Toate' %></span>
         </h2>
+
+        <div id="filters">
+            <div class="row">
+                <div class="col-md-3 form-group">
+                    <label for="eventName">Nume eveniment:</label>
+                    <input type="text" id="eventName" name="eventName" class="form-control">
+                </div>
+                <div class="col-md-3 form-group">
+                    <label for="studentPrice">Pret student:</label>
+                    <input type="range" id="studentPrice" name="studentPrice" step="1" value="0" class="form-control">
+                    <output id="studentPriceOutput" class="form-text text-muted">0</output>
+                </div>
+                <div class="col-md-3 form-group">
+                    <label>Adult-only 🔞</label>
+                    <div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" id="adultiYes" name="adulti" value="yes" class="form-check-input">
+                            <label for="adultiYes" class="form-check-label">Da</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" id="adultiNo" name="adulti" value="no" class="form-check-input">
+                            <label for="adultiNo" class="form-check-label">Nu</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" id="adultiAll" name="adulti" value="all" checked class="form-check-input">
+                            <label for="adultiAll" class="form-check-label">Toate</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mt-2">
+                    <button id="filtreaza" class="btn btn-secondary">Filtreaza</button>
+                    <button id="reset" class="btn btn-primary">Resetare filtre</button>
+                    <button id="calculeaza" class="btn btn-secondary">Calculeaza media preturilor</button>
+                </div>
+            </div>
+        </div>
+
         <div class="row evenimente">
             <% events.forEach(event => { %>
                 <article class="col-md-4 <%= event.categorie_1 %>" id="elem_<%= event.id %>">
@@ -31,11 +70,20 @@
                                     </tr>
                                     <tr>
                                         <td>Data:</td>
-                                        <td><time datetime="<%= event.data %>"><%= new Date(event.data).toLocaleDateString('ro-RO', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'}) %></time></td>
+                                        <td>
+                                            <time datetime="<%= event.data %>"><%= new Date(
+                                                        event.data).toLocaleDateString('ro-RO', {
+                                                    weekday: 'long',
+                                                    day: 'numeric',
+                                                    month: 'long',
+                                                    year: 'numeric'
+                                                }) %></time>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Pret:</td>
-                                        <td><%= event.pret %> RON <small>(Studenti: <%= event.pret_studenti %> RON)</small></td>
+                                        <td><%= event.pret %> RON <small>(Studenti: <%= event.pret_studenti %>
+                                                RON)</small></td>
                                     </tr>
                                     <tr>
                                         <td>Adult-only 🔞</td>
@@ -57,7 +105,8 @@
                             <%= event.descriere %>. <a href="/eveniment/<%= event.id %>">Detalii &raquo;</a>
                         </p>
                         <p>
-                            <strong>Categorie:</strong> <a href="/evenimente/<%= event.categorie_1%>"><%= obGlobal.categorii[event.categorie_1] %></a>
+                            <strong>Categorie:</strong>
+                            <a href="/evenimente/<%= event.categorie_1 %>"><%= obGlobal.categorii[event.categorie_1] %></a>
                         </p>
                     </div>
                 </article>
@@ -84,18 +133,121 @@
 </div>
 
 <script>
-    document.querySelectorAll('.event-card').forEach(card => {
-      card.addEventListener('click', () => {
-        let eventId = card.parentElement.id.split('_')[1];
+  let events = <%- JSON.stringify(events) %>;
 
-        fetch(`/eveniment/${eventId}?modal=1`).then(response => response.text()).then(html => {
-          document.querySelector('#modalBody').innerHTML = html;
+  // Modal eveniment
+  document.querySelectorAll('.event-card').forEach(card => {
+    card.addEventListener('click', () => {
+      let eventId = card.parentElement.id.split('_')[1];
 
-          let modal = new bootstrap.Modal(document.getElementById('modalEveniment'));
-          modal.show();
-        }).catch(error => console.error('A apărut o eroare:', error));
-      });
+      fetch(`/eveniment/${eventId}?modal=1`).then(response => response.text()).then(html => {
+        document.querySelector('#modalBody').innerHTML = html;
+
+        let modal = new bootstrap.Modal(document.getElementById('modalEveniment'));
+        modal.show();
+      }).catch(error => console.error('A apărut o eroare:', error));
     });
+  });
+
+  // Afisare pret student la slider
+  document.getElementById('studentPrice').addEventListener('input', function(e) {
+    document.getElementById('studentPriceOutput').textContent = e.target.value;
+  });
+
+  // Filtrare evenimente
+  document.addEventListener('DOMContentLoaded', function() {
+    let nameInput = document.getElementById('eventName');
+    let studentPriceInput = document.getElementById('studentPrice');
+
+    let filterButton = document.getElementById('filtreaza');
+    let resetButton = document.getElementById('reset');
+
+    filterButton.addEventListener('click', filterEvents);
+    resetButton.addEventListener('click', resetEvents);
+
+    function filterEvents() {
+      let searchName = nameInput.value.toLowerCase();
+      let filterStudentPrice = studentPriceInput.value;
+      let filterAdults = document.querySelector('input[name="adulti"]:checked').value;
+
+      // Filtram evenimentele
+      let filteredEvents = events.filter(event => {
+        let name = event.nume.toLowerCase();
+
+        // Verificam daca evenimentul se potriveste cu filtrele
+        let nameMatches = name.includes(searchName);
+        let studentPriceMatches = event.pret_studenti >= filterStudentPrice;
+        let booleanMatches = (filterAdults === 'all') || (event.adulti && filterAdults === 'yes') ||
+            (!event.adulti && filterAdults === 'no');
+
+        return nameMatches && studentPriceMatches && booleanMatches;
+      });
+
+      // Ascundem toate evenimentele
+      let eventElements = document.querySelectorAll('.evenimente article');
+      eventElements.forEach(event => {
+        event.style.display = 'none';
+      });
+
+      // Afisam doar evenimentele care se potrivesc cu filtrele
+      filteredEvents.forEach(event => {
+        let eventElement = document.getElementById('elem_' + event.id);
+        eventElement.style.display = 'block';
+      });
+    }
+
+    function resetEvents() {
+      if (!confirm('Sigur dorești să resetezi filtrele?')) {
+        return;
+      }
+
+      nameInput.value = '';
+      studentPriceInput.value = 0;
+      document.getElementById('studentPriceOutput').textContent = '0';
+      document.querySelector('input[name="adulti"][value="all"]').checked = true;
+
+      filterEvents();
+    }
+  });
+
+  // Calculare medie preturi
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('calculeaza').addEventListener('click', calculateAverage);
+
+    function calculateAverage() {
+      // Selectam evenimentele afisate
+      let displayedEvents = Array.from(document.querySelectorAll('.evenimente article')).
+          filter(event => event.style.display !== 'none');
+
+      // Calculam media preturilor
+      let sum = 0;
+      displayedEvents.forEach(card => {
+        let eventId = card.id.split('_')[1];
+        let event = events.find(event => event.id == eventId);
+
+        sum += parseFloat(event.pret);
+      });
+
+      let average = sum / displayedEvents.length;
+
+      // Cream div-ul
+      let div = document.createElement('div');
+      div.style.position = 'fixed';
+      div.style.bottom = '10px';
+      div.style.right = '10px';
+      div.style.padding = '10px';
+      div.style.backgroundColor = 'red';
+      div.textContent = 'Media preturilor: ' + average.toFixed(2) + ' RON';
+
+      // Adaugam div-ul la document
+      document.body.appendChild(div);
+
+      // Stergem div-ul dupa 2 secunde
+      setTimeout(function() {
+        document.body.removeChild(div);
+      }, 2000);
+    }
+  });
 </script>
 
 </body>

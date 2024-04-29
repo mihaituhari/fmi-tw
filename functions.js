@@ -52,7 +52,17 @@ function getEvents(client, categorie_1) {
       if (err) {
         reject(err);
       } else {
-        resolve(res.rows);
+        // Transformam fiecare row intr-un obiect
+        let events = res.rows.map(row => {
+          let event = {};
+          for (let prop in row) {
+            event[prop] = row[prop];
+          }
+
+          return event;
+        });
+
+        resolve(events);
       }
     });
   });

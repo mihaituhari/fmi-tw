@@ -1,7 +1,7 @@
 <h2>
     <a href="/evenimente">Evenimente</a> /
     <a href="/evenimente/<%= event.categorie_1%>"><%= obGlobal.categorii[event.categorie_1] %></a> /
-    <span class="text-secondary"><%= event.nume %> #<%= event.id %></span>
+    <span class="text-secondary"><%= event.nume %></span>
     <%- include('../fragmente/icon_categorie.ejs', {categorie: event.categorie_1}) %>
 </h2>
 <div class="row evenimente">
