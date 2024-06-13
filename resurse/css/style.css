@@ -19869,15 +19869,13 @@ video {
   max-width: 800px;
   min-width: 200px;
 }
-
-::cue {
+video ::cue {
   background-color: #fff;
   color: #333;
   text-align: center;
   vertical-align: top;
 }
-
-::cue(.italic) {
+video ::cue(.italic) {
   font-style: italic;
 }
 
