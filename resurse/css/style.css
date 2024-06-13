@@ -19923,6 +19923,7 @@ p::selection {
 .evenimente > article img {
   margin-top: 12px;
   width: 100%;
+  min-width: 100px;
 }
 
 .calcul-evenimente {
