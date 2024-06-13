@@ -36,14 +36,26 @@ function getGalleryImages() {
   return filteredImages;
 }
 
-function getEvents(client, categorie_1) {
+function getEvents(client, categorie_1, keyword) {
   return new Promise((resolve, reject) => {
     let query = 'SELECT * FROM evenimente';
     let params = [];
+    let whereClauses = [];
 
     if (categorie_1) {
-      query += ' WHERE categorie_1 = $1';
+      console.log('a');
+      whereClauses.push('categorie_1 = $' + (params.length + 1));
       params.push(categorie_1);
+    }
+
+    if (keyword) {
+      whereClauses.push('LOWER(TRIM(nume)) LIKE $' + (params.length + 1));
+      keyword = keyword.toLowerCase().trim();
+      params.push('%' + keyword + '%');
+    }
+
+    if (whereClauses.length > 0) {
+      query += ' WHERE ' + whereClauses.join(' AND ');
     }
 
     query += ' ORDER BY data DESC';

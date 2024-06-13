@@ -12,6 +12,10 @@
         <h2>
             <a href="/evenimente">Evenimente</a> /
             <span class="text-secondary"><%= categorie_1 ? obGlobal.categorii[categorie_1] : 'Toate' %></span>
+
+            <% if (keyword) { %>
+                <small class="text-primary">(filtrată după "<%= keyword %>")</small>
+            <% } %>
         </h2>
 
         <div id="filters" class="bg-white">

@@ -145,6 +145,7 @@ app.get('/favicon.ico', (req, res) => {
 
 app.get('/evenimente/:categorie?', async (req, res) => {
   let categorie_1 = req.params.categorie;
+  let keyword = req.query.keyword;
 
   if (categorie_1 && !obGlobal.categorii.hasOwnProperty(categorie_1)) {
     afisareEroare(obGlobal, res, 404);
@@ -152,8 +153,8 @@ app.get('/evenimente/:categorie?', async (req, res) => {
   }
 
   try {
-    let events = await getEvents(client, categorie_1);
-    res.render('pagini/evenimente', {events: events, categorie_1: categorie_1});
+    let events = await getEvents(client, categorie_1, keyword);
+    res.render('pagini/evenimente', {events: events, categorie_1: categorie_1, keyword: keyword});
   } catch (err) {
     afisareEroare(obGlobal, res, 500);
   }
