@@ -45,7 +45,7 @@ console.log('→ Folderul curent de lucru [__process.cwd()]: ' + process.cwd());
  */
 let createFolders = ['temp', 'backup'];
 
-console.log('\n 📁 Creare foldere temporare: ');
+console.log('\n📁 Creare foldere temporare: ');
 createFolders.forEach((folder) => {
   let folderPath = path.join(__dirname, folder);
 
@@ -92,7 +92,7 @@ function compileazaScss(caleScss, caleCss) {
 }
 
 // Compilare initiala
-console.log('\n 📦 Compilare SCSS/SASS in CSS:');
+console.log('\n📦 Compilare SCSS/SASS in CSS:');
 fs.readdirSync(obGlobal.folderScss).forEach(file => {
   if (path.extname(file) === '.sass') {
     compileazaScss(file, path.basename(file, '.sass') + '.css');

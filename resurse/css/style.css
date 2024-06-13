@@ -19844,7 +19844,7 @@ math mi {
   flex-direction: column;
 }
 
-.btn-rounded {
+.btn-tab-rounded {
   width: 200px;
   text-align: center;
   background-color: #ffd97a;
@@ -19858,7 +19858,7 @@ math mi {
   border-left: 5px solid #ff5b4f;
   margin-top: -5px;
 }
-.btn-rounded:hover, .btn-rounded.active {
+.btn-tab-rounded:hover, .btn-tab-rounded.active {
   border-left: 5px solid #ffd97a;
   background-color: #ff5b4f;
   color: #fff;
