@@ -154,42 +154,41 @@
 </div>
 
 <script>
-  let events = <%- JSON.stringify(events) %>;
+  $(document).ready(function() {
+    let events = <%- JSON.stringify(events) %>;
 
-  // Modal eveniment
-  document.querySelectorAll('.event-card').forEach(card => {
-    card.addEventListener('click', () => {
-      let eventId = card.parentElement.id.split('_')[1];
+    // Modal eveniment
+    $('.event-card').click(function() {
+      let eventId = $(this).parent().attr('id').split('_')[1];
 
-      fetch(`/eveniment/${eventId}?modal=1`).then(response => response.text()).then(html => {
-        document.querySelector('#modalBody').innerHTML = html;
-
-        let modal = new bootstrap.Modal(document.getElementById('modalEveniment'));
+      $.get(`/eveniment/${eventId}?modal=1`, function(html) {
+        $('#modalBody').html(html);
+        let modal = new bootstrap.Modal($('#modalEveniment')[0]);
         modal.show();
-      }).catch(error => console.error('A apărut o eroare:', error));
+      }).fail(function() {
+        console.error('A apărut o eroare:');
+      });
     });
-  });
 
-  // Afisare pret student la slider
-  document.getElementById('studentPrice').addEventListener('input', function(e) {
-    document.getElementById('studentPriceOutput').textContent = e.target.value;
-  });
+    // Afisare pret student la slider
+    $('#studentPrice').on('input', function() {
+      $('#studentPriceOutput').text($(this).val());
+    });
 
-  // Filtrare evenimente
-  document.addEventListener('DOMContentLoaded', function() {
-    let nameInput = document.getElementById('eventName');
-    let studentPriceInput = document.getElementById('studentPrice');
+    // Filtrare evenimente
+    let nameInput = $('#eventName');
+    let studentPriceInput = $('#studentPrice');
 
-    let filterButton = document.getElementById('filtreaza');
-    let resetButton = document.getElementById('reset');
+    let filterButton = $('#filtreaza');
+    let resetButton = $('#reset');
 
-    filterButton.addEventListener('click', filterEvents);
-    resetButton.addEventListener('click', resetEvents);
+    filterButton.click(filterEvents);
+    resetButton.click(resetEvents);
 
     function filterEvents() {
-      let searchName = faraDiacritice(nameInput.value.toLowerCase());
-      let filterStudentPrice = studentPriceInput.value;
-      let filterAdults = document.querySelector('input[name="adulti"]:checked').value;
+      let searchName = faraDiacritice(nameInput.val().toLowerCase());
+      let filterStudentPrice = studentPriceInput.val();
+      let filterAdults = $('input[name="adulti"]:checked').val();
 
       // Filtram evenimentele
       let filteredEvents = events.filter(event => {
@@ -205,15 +204,13 @@
       });
 
       // Ascundem toate evenimentele
-      let eventElements = document.querySelectorAll('.evenimente article');
-      eventElements.forEach(event => {
-        event.style.display = 'none';
-      });
+      let eventElements = $('.evenimente article');
+      eventElements.hide();
 
+      console.log(filteredEvents);
       // Afisam doar evenimentele care se potrivesc cu filtrele
       filteredEvents.forEach(event => {
-        let eventElement = document.getElementById('elem_' + event.id);
-        eventElement.style.display = 'block';
+        $('#elem_' + event.id).show();
       });
     }
 
@@ -222,10 +219,10 @@
         return;
       }
 
-      nameInput.value = '';
-      studentPriceInput.value = 0;
-      document.getElementById('studentPriceOutput').textContent = '0';
-      document.querySelector('input[name="adulti"][value="all"]').checked = true;
+      nameInput.val('');
+      studentPriceInput.val(0);
+      $('#studentPriceOutput').textContent = '0';
+      $('input[name="adulti"][value="all"]').checked = true;
 
       filterEvents();
     }
@@ -248,15 +245,13 @@
         return diacritice[char] || char;
       }).join('');
     }
-  });
 
-  // Calculare medie preturi
-  document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('calculeaza').addEventListener('click', calculateAverage);
+    // Calculare medie preturi
+    $('#calculeaza').click(calculateAverage);
 
     function calculateAverage() {
       // Selectam evenimentele afisate
-      let displayedEvents = Array.from(document.querySelectorAll('.evenimente article')).
+      let displayedEvents = Array.from($('.evenimente article')).
           filter(event => event.style.display !== 'none');
 
       // Calculam media preturilor
@@ -283,24 +278,22 @@
         document.body.removeChild(div);
       }, 2000);
     }
-  });
 
-  // Sortare
-  document.addEventListener('DOMContentLoaded', function() {
-    let sortAscButton = document.getElementById('sortAsc');
-    let sortDescButton = document.getElementById('sortDesc');
+    // Sortare
+    let sortAscButton = $('#sortAsc');
+    let sortDescButton = $('#sortDesc');
 
-    sortAscButton.addEventListener('click', function() {
+    sortAscButton.click(function() {
       sortEvents('asc');
     });
 
-    sortDescButton.addEventListener('click', function() {
+    sortDescButton.click(function() {
       sortEvents('desc');
     });
 
     function sortEvents(order) {
       // Selectam containerul evenimentelor
-      let container = document.querySelector('.evenimente');
+      let container = $('.evenimente');
 
       // Sortam evenimentele (implicit ascendent)
       events.sort((a, b) => {
@@ -330,12 +323,11 @@
 
       // Parcurgem evenimentele sortate si le mutam in container in ordinea noua
       events.forEach(event => {
-        let eventElement = document.getElementById('elem_' + event.id);
-        container.appendChild(eventElement);
+        let eventElement = $('#elem_' + event.id);
+        container.append(eventElement);
       });
     }
   });
-
 </script>
 
 </body>
