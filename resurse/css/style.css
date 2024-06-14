@@ -19908,6 +19908,9 @@ p::selection {
 .evenimente > article {
   margin: 20px 0;
 }
+.evenimente > article[data-visible="0"] {
+  display: none;
+}
 .evenimente > article .event-card {
   border-radius: 15px;
   box-shadow: 0 0 10px 0 #dee2e6;
@@ -19933,6 +19936,20 @@ p::selection {
   color: #f5f1f1;
   box-shadow: 0 0 10px 0 #dee2e6;
   border-radius: 15px;
+}
+
+.pagination a {
+  margin-right: 10px;
+  background: #050202;
+  color: #f5f1f1;
+  border: 1px solid #ff5b4f;
+  padding: 5px 10px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.pagination a.active {
+  background: #ff5b4f;
+  color: #f5f1f1;
 }
 
 #filters {

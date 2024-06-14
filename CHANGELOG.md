@@ -1,4 +1,8 @@
-v6.0.0-db / TBA / 2.65 pct
+v7.0.0-yeee / TBA
+==================
+* Paginare (0.5p)
+
+v6.0.0-db / 2024-06-12 / 2.65 pct
 ==================
 * Instalare si integrare PostgreSQL (0)
 * DB afisare + sortare/filtrare/calculare (1.2p)
@@ -9,7 +13,7 @@ v6.0.0-db / TBA / 2.65 pct
 * Bonus 11 - modal detalii eveniment (0.4p)
 * Stilizare butoane filtre (0.05p)
 
-v5.0.0-scss-bootstrap-efecte / 1.025 pct
+v5.0.0-scss-bootstrap-efecte / 2024-04-18 / 1.025 pct
 ==================
 * Pus pe Github (0.05)
 * Compilare automata SCSS (0.25)
@@ -55,4 +59,6 @@ v0.0.0-etapa-0-cerinte / 2024-03-14 / 0.3 pct
 * Add project details (0.3)
 
 -----
-Total 5.95 pct
+
+Subtotal 1-6: 8.4p
+Subtotal 7: 0.5p
