@@ -106,6 +106,31 @@ fs.watch(obGlobal.folderScss, (eventType, filename) => {
   }
 });
 
+console.log('\n🛠️Pregatire sistem (oferte, backup, etc):');
+
+/**
+ * Stergere fisiere `/backup` vechi
+ */
+const backupFolderPath = path.join(__dirname, 'backup', 'resurse', 'css');
+const intervalStergereBackup = 30; // Minute
+function deleteOldBackupFiles() {
+  const files = fs.readdirSync(backupFolderPath);
+
+  files.forEach(file => {
+    const filePath = path.join(backupFolderPath, file);
+    const stats = fs.statSync(filePath);
+    const now = Date.now();
+    const fileAgeInMinutes = (now - stats.mtime) / 1000 / 60;
+
+    if (fileAgeInMinutes > intervalStergereBackup) {
+      fs.unlinkSync(filePath);
+      console.log(` → ℹ️ [Backup][-] stergere backup/${file}`);
+    }
+  });
+}
+
+setInterval(deleteOldBackupFiles, intervalStergereBackup * 60 * 1000);
+
 /**
  * Oferte.
  */
@@ -131,6 +156,8 @@ function generateOffer() {
     return generateOffer();
   }
 
+  console.log(` → ℹ️ [Oferte][+] creare oferta pentru ${oferta.categorie} cu reducerea ${oferta.reducere}%`);
+
   // Adaugam oferta noua
   oferte.unshift(oferta);
 
@@ -139,6 +166,8 @@ function generateOffer() {
   oferte = oferte.filter(oferta => {
     let endDate = new Date(oferta["data-finalizare"]);
     let expiredTime = (now - endDate) / 60000; // Convertim din milisecunde in minute
+
+    console.log(` → ℹ️ [Oferte][-] stergere oferta pentru ${oferta.categorie} cu reducerea ${oferta.reducere}%`);
 
     return expiredTime <= durataStergereOferteExpirate;
   });
