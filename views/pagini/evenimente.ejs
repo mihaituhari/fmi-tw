@@ -7,6 +7,7 @@
 <body>
 
 <%- include('../fragmente/header.ejs') %>
+
 <main>
     <section>
         <h2>
@@ -82,11 +83,11 @@
                             <div class="col-md-7">
                                 <table>
                                     <tr>
-                                        <td>Locatie:</td>
+                                        <td>Locatie</td>
                                         <td><%= event.locatie %></td>
                                     </tr>
                                     <tr>
-                                        <td>Data:</td>
+                                        <td>Data</td>
                                         <td>
                                             <time datetime="<%= event.data %>"><%= new Date(
                                                         event.data).toLocaleDateString('ro-RO', {
@@ -98,10 +99,24 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Pret:</td>
                                         <td>
-                                            <%= event.pret %> RON
-                                            <small>(Studenti: <%= event.pret_studenti %> RON)</small>
+                                            Pret
+                                            <% if (locals.offer && locals.offer.categorie === event.categorie_1) { %>
+                                                <span class="badge bg-warning-subtle text-primary">-<%= locals.offer.reducere %>%</span>
+                                            <% } %>
+                                        </td>
+                                        <td>
+                                            <% if (locals.offer && locals.offer.categorie === event.categorie_1) { %>
+                                                <small class="strike"><%= event.pret %> RON</small>
+                                                <%= (event.pret - (event.pret * locals.offer.reducere / 100)).toFixed(2) %> RON
+
+                                                <br>
+                                                <small>(Studenti: <small class="strike"><%= event.pret_studenti %> RON</small> <%= (event.pret_studenti - (event.pret_studenti * locals.offer.reducere / 100)).toFixed(2) %> RON)</small>
+                                            <% } else { %>
+                                                <%= event.pret %> RON
+                                                <br>
+                                                <small>(Studenti: <%= event.pret_studenti %> RON)</small>
+                                            <% } %>
 
                                             <sup>raport: <%= (event.pret_studenti / event.pret).toFixed(2) %></sup>
                                         </td>
@@ -111,7 +126,7 @@
                                         <td><%= event.adulti ? 'Da' : 'Nu' %></td>
                                     </tr>
                                     <tr>
-                                        <td>Tag-uri:</td>
+                                        <td>Tag-uri</td>
                                         <td><%= event.tags %></td>
                                     </tr>
                                 </table>

@@ -8,6 +8,19 @@
 
 <%- include('../fragmente/header.ejs') %>
 
+<% if (locals.offer) { %>
+    <div id="offer" class="alert bg-success-subtle mt-4" role="alert" data-expiry="<%= locals.offer['data-finalizare'] %>">
+        <h4 class="alert-heading"><i class="fa fa-money-bill-alt fa-spin mr-4"></i> Oferta speciala!</h4>
+        <p>Reducere de <b><%= locals.offer.reducere %>%</b> la evenimentele din categoria
+            <b><%= locals.offer.categorie %></b>.</p>
+        <p class="offer-timer">
+            <i class="fa fa-clock"></i> Oferta expira in: <strong id="timer"></strong>
+        </p>
+        <a class="btn btn-primary" href="/evenimente/<%= locals.offer.categorie %>" class="btn btn-primary">Vezi
+            evenimentele</a>
+    </div>
+<% } %>
+
 <main>
     <div class="grid-container">
         <div class="zone-1-banner">
@@ -83,28 +96,58 @@
         </div>
         <div class="zone-3-calendar">
             <h2><i class="fa fa-calendar"></i>Calendar</h2>
-            <q>Nam mauris augue, condimentum tincidunt odio ut, tempor pretium lectus. Donec tempor feugiat justo et dignissim. Maecenas pretium libero diam, sit amet aliquet enim dictum volutpat. Vivamus rhoncus ex lorem, non accumsan leo fermentum vitae. Etiam vehicula nulla id felis euismod, a suscipit dolor posuere. Vivamus rhoncus, nulla non cursus venenatis, massa leo bibendum tortor, non consequat enim libero eget nunc. Nullam porttitor, quam in auctor laoreet, purus nunc rutrum erat, sed consectetur augue diam et turpis.</q>
+            <q>Nam mauris augue, condimentum tincidunt odio ut, tempor pretium lectus. Donec tempor feugiat justo et
+                dignissim. Maecenas pretium libero diam, sit amet aliquet enim dictum volutpat. Vivamus rhoncus ex
+                lorem, non accumsan leo fermentum vitae. Etiam vehicula nulla id felis euismod, a suscipit dolor
+                posuere. Vivamus rhoncus, nulla non cursus venenatis, massa leo bibendum tortor, non consequat enim
+                libero eget nunc. Nullam porttitor, quam in auctor laoreet, purus nunc rutrum erat, sed consectetur
+                augue diam et turpis.</q>
         </div>
         <div class="zone-4-announcements">
             <h2><i class="fa fa-bullhorn"></i>Anunturi</h2>
-            <q>Nam mauris augue, condimentum tincidunt odio ut, tempor pretium lectus. Donec tempor feugiat justo et dignissim. Maecenas pretium libero diam, sit amet aliquet enim dictum volutpat. Vivamus rhoncus ex lorem, non accumsan leo fermentum vitae. Etiam vehicula nulla id felis euismod, a suscipit dolor posuere. Vivamus rhoncus, nulla non cursus venenatis, massa leo bibendum tortor, non consequat enim libero eget nunc. Nullam porttitor, quam in auctor laoreet, purus nunc rutrum erat, sed consectetur augue diam et turpis.</q>
+            <q>Nam mauris augue, condimentum tincidunt odio ut, tempor pretium lectus. Donec tempor feugiat justo et
+                dignissim. Maecenas pretium libero diam, sit amet aliquet enim dictum volutpat. Vivamus rhoncus ex
+                lorem, non accumsan leo fermentum vitae. Etiam vehicula nulla id felis euismod, a suscipit dolor
+                posuere. Vivamus rhoncus, nulla non cursus venenatis, massa leo bibendum tortor, non consequat enim
+                libero eget nunc. Nullam porttitor, quam in auctor laoreet, purus nunc rutrum erat, sed consectetur
+                augue diam et turpis.</q>
         </div>
         <div class="zone-5-users-online">
             <h2><i class="fa fa-user"></i> Useri online</h2>
-            <q>Nam mauris augue, condimentum tincidunt odio ut, tempor pretium lectus. Donec tempor feugiat justo et dignissim. Maecenas pretium libero diam, sit amet aliquet enim dictum volutpat. Vivamus rhoncus ex lorem, non accumsan leo fermentum vitae. Etiam vehicula nulla id felis euismod, a suscipit dolor posuere. Vivamus rhoncus, nulla non cursus venenatis, massa leo bibendum tortor, non consequat enim libero eget nunc. Nullam porttitor, quam in auctor laoreet, purus nunc rutrum erat, sed consectetur augue diam et turpis.</q>
+            <q>Nam mauris augue, condimentum tincidunt odio ut, tempor pretium lectus. Donec tempor feugiat justo et
+                dignissim. Maecenas pretium libero diam, sit amet aliquet enim dictum volutpat. Vivamus rhoncus ex
+                lorem, non accumsan leo fermentum vitae. Etiam vehicula nulla id felis euismod, a suscipit dolor
+                posuere. Vivamus rhoncus, nulla non cursus venenatis, massa leo bibendum tortor, non consequat enim
+                libero eget nunc. Nullam porttitor, quam in auctor laoreet, purus nunc rutrum erat, sed consectetur
+                augue diam et turpis.</q>
         </div>
         <div class="zone-6-user-stats">
             <h2><i class="fa fa-chart-area"></i> Date utilizatori &amp; statistici</h2>
             <p>IP-ul dvs. este: <%= locals.ip %></p>
-            <q>Nam mauris augue, condimentum tincidunt odio ut, tempor pretium lectus. Donec tempor feugiat justo et dignissim. Maecenas pretium libero diam, sit amet aliquet enim dictum volutpat. Vivamus rhoncus ex lorem, non accumsan leo fermentum vitae. Etiam vehicula nulla id felis euismod, a suscipit dolor posuere. Vivamus rhoncus, nulla non cursus venenatis, massa leo bibendum tortor, non consequat enim libero eget nunc. Nullam porttitor, quam in auctor laoreet, purus nunc rutrum erat, sed consectetur augue diam et turpis.</q>
+            <q>Nam mauris augue, condimentum tincidunt odio ut, tempor pretium lectus. Donec tempor feugiat justo et
+                dignissim. Maecenas pretium libero diam, sit amet aliquet enim dictum volutpat. Vivamus rhoncus ex
+                lorem, non accumsan leo fermentum vitae. Etiam vehicula nulla id felis euismod, a suscipit dolor
+                posuere. Vivamus rhoncus, nulla non cursus venenatis, massa leo bibendum tortor, non consequat enim
+                libero eget nunc. Nullam porttitor, quam in auctor laoreet, purus nunc rutrum erat, sed consectetur
+                augue diam et turpis.</q>
         </div>
         <div class="zone-7-site-stats">
             <h2><i class="fa fa-chart-column"></i> Date site &amp; server</h2>
-            <q>Nam mauris augue, condimentum tincidunt odio ut, tempor pretium lectus. Donec tempor feugiat justo et dignissim. Maecenas pretium libero diam, sit amet aliquet enim dictum volutpat. Vivamus rhoncus ex lorem, non accumsan leo fermentum vitae. Etiam vehicula nulla id felis euismod, a suscipit dolor posuere. Vivamus rhoncus, nulla non cursus venenatis, massa leo bibendum tortor, non consequat enim libero eget nunc. Nullam porttitor, quam in auctor laoreet, purus nunc rutrum erat, sed consectetur augue diam et turpis.</q>
+            <q>Nam mauris augue, condimentum tincidunt odio ut, tempor pretium lectus. Donec tempor feugiat justo et
+                dignissim. Maecenas pretium libero diam, sit amet aliquet enim dictum volutpat. Vivamus rhoncus ex
+                lorem, non accumsan leo fermentum vitae. Etiam vehicula nulla id felis euismod, a suscipit dolor
+                posuere. Vivamus rhoncus, nulla non cursus venenatis, massa leo bibendum tortor, non consequat enim
+                libero eget nunc. Nullam porttitor, quam in auctor laoreet, purus nunc rutrum erat, sed consectetur
+                augue diam et turpis.</q>
         </div>
         <div class="zone-8-news">
             <h2><i class="fa fa-newspaper"></i> Noutati</h2>
-            <q>Nam mauris augue, condimentum tincidunt odio ut, tempor pretium lectus. Donec tempor feugiat justo et dignissim. Maecenas pretium libero diam, sit amet aliquet enim dictum volutpat. Vivamus rhoncus ex lorem, non accumsan leo fermentum vitae. Etiam vehicula nulla id felis euismod, a suscipit dolor posuere. Vivamus rhoncus, nulla non cursus venenatis, massa leo bibendum tortor, non consequat enim libero eget nunc. Nullam porttitor, quam in auctor laoreet, purus nunc rutrum erat, sed consectetur augue diam et turpis.</q>
+            <q>Nam mauris augue, condimentum tincidunt odio ut, tempor pretium lectus. Donec tempor feugiat justo et
+                dignissim. Maecenas pretium libero diam, sit amet aliquet enim dictum volutpat. Vivamus rhoncus ex
+                lorem, non accumsan leo fermentum vitae. Etiam vehicula nulla id felis euismod, a suscipit dolor
+                posuere. Vivamus rhoncus, nulla non cursus venenatis, massa leo bibendum tortor, non consequat enim
+                libero eget nunc. Nullam porttitor, quam in auctor laoreet, purus nunc rutrum erat, sed consectetur
+                augue diam et turpis.</q>
         </div>
     </div>
 
@@ -112,7 +155,8 @@
     <section id="home">
         <h2>Eventz!</h2>
         <p>
-            <strong>Descoperă</strong> <b>concerte</b> <em>excepționale</em>, <b>spectacole</b> <em>impresionante</em> și bucură-te de <b>muzică</b> de calitate superioară.<br>
+            <strong>Descoperă</strong> <b>concerte</b> <em>excepționale</em>, <b>spectacole</b> <em>impresionante</em>
+            și bucură-te de <b>muzică</b> de calitate superioară.<br>
             <q>Muzica dă suflet universului, aripi minții, zbor imaginației și viață tuturor lucrurilor</q>.
         </p>
         <ul>
@@ -138,9 +182,12 @@
         <div class="iframe-container">
             <iframe width="560" height="315" name="iframe_video" src="https://www.youtube.com/embed/AsM1ZLx2jVo?si=YnWPfwQjFPQ5IA9_" title="YouTube video player" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <div class="iframe-buttons btn-group">
-                <a class="btn-tab-rounded active" href="https://www.youtube.com/embed/AsM1ZLx2jVo?si=YnWPfwQjFPQ5IA9_" target="iframe_video">Atmospheric dub techno MIX 32</a>
-                <a class="btn-tab-rounded" href="https://www.youtube.com/embed/M1lPuCL3u1M?si=s4FKu5ta02yCdlv0" target="iframe_video">Atmospheric dub techno MIX 33</a>
-                <a class="btn-tab-rounded" href="https://www.youtube.com/embed/DzZ3WerEsn0?si=i8O9SPq8Mnt-3Hg0" target="iframe_video">Atmospheric dub techno MIX 35</a>
+                <a class="btn-tab-rounded active" href="https://www.youtube.com/embed/AsM1ZLx2jVo?si=YnWPfwQjFPQ5IA9_" target="iframe_video">Atmospheric
+                    dub techno MIX 32</a>
+                <a class="btn-tab-rounded" href="https://www.youtube.com/embed/M1lPuCL3u1M?si=s4FKu5ta02yCdlv0" target="iframe_video">Atmospheric
+                    dub techno MIX 33</a>
+                <a class="btn-tab-rounded" href="https://www.youtube.com/embed/DzZ3WerEsn0?si=i8O9SPq8Mnt-3Hg0" target="iframe_video">Atmospheric
+                    dub techno MIX 35</a>
             </div>
         </div>
     </section>
@@ -150,12 +197,14 @@
 
         <details>
             <summary>Cum pot cumpăra bilete?</summary>
-            <p>Puteți cumpăra bilete direct de pe site-ul nostru. Accesați secțiunea "Evenimente" și selectați evenimentul dorit.</p>
+            <p>Puteți cumpăra bilete direct de pe site-ul nostru. Accesați secțiunea "Evenimente" și selectați
+                evenimentul dorit.</p>
         </details>
 
         <details>
             <summary>Cum pot contacta suportul?</summary>
-            <p>Puteți contacta suportul nostru prin email la adresa suport@eventz.ro sau prin telefon la numărul +1234567890.</p>
+            <p>Puteți contacta suportul nostru prin email la adresa suport@eventz.ro sau prin telefon la numărul
+                +1234567890.</p>
         </details>
 
         <details>
@@ -194,6 +243,48 @@
 
     <%- include('../fragmente/galerie.ejs', {images: galleryImages}) %>
 </main>
+
+<script>
+  $(document).ready(function() {
+    let offerHolder = $('#offer');
+
+    if (offerHolder.length > 0) {
+      let expiryDate = new Date(offerHolder.data('expiry'));
+      let timerElement = $('#timer');
+
+      function updateTimer() {
+        let now = new Date();
+        let distance = expiryDate - now;
+
+        let hours = Math.floor(distance / (1000 * 60 * 60));
+        let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        let output = '';
+        if (hours > 0) {
+          output += hours + ' ore ';
+        }
+
+        output += minutes + ' minute ' + seconds + ' secunde ';
+
+        timerElement.html(output);
+
+        // Ultimele 10 secunde
+        if (distance < 10000) {
+          timerElement.css('color', 'orange');
+        }
+
+        if (distance < 0) {
+          clearInterval(interval);
+          offerHolder.fadeOut();
+        }
+      }
+
+      updateTimer();
+      let interval = setInterval(updateTimer, 1000);
+    }
+  });
+</script>
 
 <%- include('../fragmente/footer.ejs') %>
 

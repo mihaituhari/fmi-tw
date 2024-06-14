@@ -43,7 +43,6 @@ function getEvents(client, categorie_1, keyword) {
     let whereClauses = [];
 
     if (categorie_1) {
-      console.log('a');
       whereClauses.push('categorie_1 = $' + (params.length + 1));
       params.push(categorie_1);
     }

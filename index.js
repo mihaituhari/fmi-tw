@@ -107,6 +107,64 @@ fs.watch(obGlobal.folderScss, (eventType, filename) => {
 });
 
 /**
+ * Oferte.
+ */
+const intervalGenerareOferte = 1; // Minute
+const durataStergereOferteExpirate = 2; // Minute
+const ofertePath = path.join(__dirname, 'oferte.json');
+const reduceri = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
+
+function generateOffer() {
+  let oferte = JSON.parse(fs.readFileSync(ofertePath, 'utf8')).oferte;
+  let categorii = Object.keys(obGlobal.categorii);
+
+  // Generam oferta noua
+  let oferta = {
+    "categorie": categorii[Math.floor(Math.random() * categorii.length)],
+    "reducere": reduceri[Math.floor(Math.random() * reduceri.length)],
+    "data-incepere": new Date().toISOString(),
+    "data-finalizare": new Date(Date.now() + intervalGenerareOferte * 60 * 1000).toISOString()
+  };
+
+  // Verificam sa nu aiba aceeasi categorie cu oferta anterioara
+  if (oferte.length > 0 && oferte[0].categorie === oferta.categorie) {
+    return generateOffer();
+  }
+
+  // Adaugam oferta noua
+  oferte.unshift(oferta);
+
+  // Stergem ofertele expirate
+  let now = new Date();
+  oferte = oferte.filter(oferta => {
+    let endDate = new Date(oferta["data-finalizare"]);
+    let expiredTime = (now - endDate) / 60000; // Convertim din milisecunde in minute
+
+    return expiredTime <= durataStergereOferteExpirate;
+  });
+
+  fs.writeFileSync(ofertePath, JSON.stringify({"oferte": oferte}, null, 2));
+}
+
+generateOffer(); // Generare oferta initiala
+setInterval(generateOffer, intervalGenerareOferte * 60 * 1000);
+
+function getCurrentOffer() {
+  const oferte = JSON.parse(fs.readFileSync(ofertePath, 'utf8')).oferte;
+
+  for (let oferta of oferte) {
+    let endDate = new Date(oferta["data-finalizare"]);
+    let now = new Date();
+
+    if (endDate > now) {
+      return oferta;
+    }
+  }
+
+  return null;
+}
+
+/**
  * Views.
  */
 app.set('view engine', 'ejs');
@@ -146,6 +204,7 @@ app.get('/favicon.ico', (req, res) => {
 app.get('/evenimente/:categorie?', async (req, res) => {
   let categorie_1 = req.params.categorie;
   let keyword = req.query.keyword;
+  let offer = getCurrentOffer();
 
   if (categorie_1 && !obGlobal.categorii.hasOwnProperty(categorie_1)) {
     afisareEroare(obGlobal, res, 404);
@@ -154,7 +213,7 @@ app.get('/evenimente/:categorie?', async (req, res) => {
 
   try {
     let events = await getEvents(client, categorie_1, keyword);
-    res.render('pagini/evenimente', {events: events, categorie_1: categorie_1, keyword: keyword});
+    res.render('pagini/evenimente', {events: events, categorie_1: categorie_1, keyword: keyword, offer: offer});
   } catch (err) {
     afisareEroare(obGlobal, res, 500);
   }
@@ -163,6 +222,7 @@ app.get('/evenimente/:categorie?', async (req, res) => {
 app.get('/eveniment/:id', async (req, res) => {
   let id = req.params.id;
   let modal = req.query.modal === '1';
+  let offer = getCurrentOffer();
 
   let view = modal ? 'fragmente/eveniment' : 'pagini/eveniment';
 
@@ -170,7 +230,7 @@ app.get('/eveniment/:id', async (req, res) => {
     let event = await getEventById(client, id);
 
     if (event) {
-      res.render(view, {event: event, modal: modal});
+      res.render(view, {event: event, modal: modal, offer: offer});
     } else {
       afisareEroare(obGlobal, res, 404);
     }
@@ -183,6 +243,7 @@ app.get(['/', '/index', '/home', '/*'], (req, res) => {
   let pagina;
   let userIP = req.ip;
   let galleryImages = getGalleryImages();
+  let offer = getCurrentOffer();
 
   if (['/', '/index', '/home'].includes(req.path)) {
     pagina = 'index';
@@ -190,7 +251,7 @@ app.get(['/', '/index', '/home', '/*'], (req, res) => {
     pagina = req.path.substr(1); // Eliminam primul caracter (/)
   }
 
-  res.render(`pagini/${pagina}`, {ip: userIP, galleryImages: galleryImages}, function(err, rezultatRandare) {
+  res.render(`pagini/${pagina}`, {ip: userIP, galleryImages: galleryImages, offer: offer}, function(err, rezultatRandare) {
     if (!err) {
       res.send(rezultatRandare);
       return;
@@ -203,8 +264,6 @@ app.get(['/', '/index', '/home', '/*'], (req, res) => {
     }
   });
 });
-
-
 
 /**
  * Boot.

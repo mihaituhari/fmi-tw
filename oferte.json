@@ -1,0 +1,40 @@
+{
+  "oferte": [
+    {
+      "categorie": "sport",
+      "reducere": 15,
+      "data-incepere": "2024-06-14T12:10:48.504Z",
+      "data-finalizare": "2024-06-14T12:11:48.504Z"
+    },
+    {
+      "categorie": "arta",
+      "reducere": 30,
+      "data-incepere": "2024-06-14T12:09:48.503Z",
+      "data-finalizare": "2024-06-14T12:10:48.503Z"
+    },
+    {
+      "categorie": "muzica",
+      "reducere": 45,
+      "data-incepere": "2024-06-14T12:08:48.474Z",
+      "data-finalizare": "2024-06-14T12:09:48.474Z"
+    },
+    {
+      "categorie": "sport",
+      "reducere": 30,
+      "data-incepere": "2024-06-14T12:05:41.247Z",
+      "data-finalizare": "2024-06-14T12:15:41.247Z"
+    },
+    {
+      "categorie": "arta",
+      "reducere": 25,
+      "data-incepere": "2024-06-14T12:05:28.385Z",
+      "data-finalizare": "2024-06-14T12:15:28.385Z"
+    },
+    {
+      "categorie": "muzica",
+      "reducere": 25,
+      "data-incepere": "2024-06-14T12:05:16.857Z",
+      "data-finalizare": "2024-06-14T12:15:16.857Z"
+    }
+  ]
+}

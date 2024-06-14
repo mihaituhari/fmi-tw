@@ -1,6 +1,8 @@
-v7.0.0-yeee / TBA
+v6.1.0-yeee / TBA
 ==================
-* Paginare (0.5p)
+* Bonus 6 - Paginare (0.5p)
+* Bonus 12 - Sistem oferte (1.2p)
+* Bonus 13 - Stergere fisiere vechi `/backup` (0.15p)
 
 v6.0.0-db / 2024-06-12 / 2.65 pct
 ==================
@@ -61,4 +63,4 @@ v0.0.0-etapa-0-cerinte / 2024-03-14 / 0.3 pct
 -----
 
 Subtotal 1-6: 8.4p
-Subtotal 7: 0.5p
+Subtotal 7: 1.7p ?

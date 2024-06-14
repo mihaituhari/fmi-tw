@@ -19947,9 +19947,13 @@ p::selection {
   text-decoration: none;
   border-radius: 5px;
 }
-.pagination a.active {
+.pagination:hover, .pagination.active {
   background: #ff5b4f;
   color: #f5f1f1;
+}
+
+.offer-timer {
+  font-style: italic;
 }
 
 #filters {
@@ -20034,6 +20038,14 @@ p::selection {
 .mb-10,
 .my-10 {
   margin-bottom: 10px;
+}
+
+.mr-4 {
+  margin-right: 4px;
+}
+
+.strike {
+  text-decoration: line-through;
 }
 
 nav ul {
