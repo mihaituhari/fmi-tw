@@ -116,6 +116,9 @@ const intervalStergereBackup = 30; // Minute
 function deleteOldBackupFiles() {
   const files = fs.readdirSync(backupFolderPath);
 
+  // Exclude .gitignore
+  files.splice(files.indexOf('.gitignore'), 1);
+
   files.forEach(file => {
     const filePath = path.join(backupFolderPath, file);
     const stats = fs.statSync(filePath);
@@ -128,7 +131,7 @@ function deleteOldBackupFiles() {
     }
   });
 }
-
+deleteOldBackupFiles(); // Stergere initiala
 setInterval(deleteOldBackupFiles, intervalStergereBackup * 60 * 1000);
 
 /**
