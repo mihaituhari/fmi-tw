@@ -19947,7 +19947,7 @@ p::selection {
   text-decoration: none;
   border-radius: 5px;
 }
-.pagination:hover, .pagination.active {
+.pagination a:hover, .pagination a.active {
   background: #ff5b4f;
   color: #f5f1f1;
 }

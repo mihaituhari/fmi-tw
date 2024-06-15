@@ -1,10 +1,16 @@
 {
   "oferte": [
     {
+      "categorie": "arta",
+      "reducere": 15,
+      "data-incepere": "2024-06-15T14:33:49.350Z",
+      "data-finalizare": "2024-06-15T14:34:49.350Z"
+    },
+    {
       "categorie": "sport",
-      "reducere": 20,
-      "data-incepere": "2024-06-14T12:39:44.179Z",
-      "data-finalizare": "2024-06-14T12:40:44.179Z"
+      "reducere": 50,
+      "data-incepere": "2024-06-15T14:32:49.345Z",
+      "data-finalizare": "2024-06-15T14:33:49.345Z"
     }
   ]
 }

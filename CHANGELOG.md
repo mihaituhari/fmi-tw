@@ -62,5 +62,6 @@ v0.0.0-etapa-0-cerinte / 2024-03-14 / 0.3 pct
 
 -----
 
-Subtotal 1-6: 8.4p
-Subtotal 7: 1.7p ?
+- Subtotal 1-6: 8.4p
+- Subtotal 7: 1,85
+- Total: 10,25
