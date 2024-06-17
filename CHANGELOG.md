@@ -1,6 +1,6 @@
 v6.1.0-yeee / 2024-06-15
 ==================
-* Bonus 6 - Paginare (0.5p)
+* Bonus 5 - Paginare (0.5p)
 * Bonus 12 - Sistem oferte (1.2p)
 * Bonus 13 - Stergere fisiere vechi `/backup` (0.15p)
 
