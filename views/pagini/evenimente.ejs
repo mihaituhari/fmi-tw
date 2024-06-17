@@ -177,7 +177,7 @@
     let currentPage = 1;
     const eventsPerPage = 6;
 
-    function displayEvents() {
+    function displayEventsOfCurrentPage() {
       let allVisibleArticles = $('.evenimente article[data-visible="1"]');
 
       // Calculam indexul de start si de sfarsit pentru evenimentele de pe pagina curenta
@@ -210,7 +210,7 @@
         let link = $('<a>').attr('href', '#').text(i).click(function(e) {
           e.preventDefault();
           currentPage = i;
-          displayEvents();
+          displayEventsOfCurrentPage();
 
           $('.pagination a').removeClass('active');
           $(this).addClass('active');
@@ -263,12 +263,12 @@
       // Resetam pagina la 1 si actualizam paginarea
       currentPage = 1;
       generatePaginationLinks();
-      displayEvents();
+      displayEventsOfCurrentPage();
     }
 
     // Initializam paginarea si afisam evenimentele pentru prima pagina
     generatePaginationLinks();
-    displayEvents();
+    displayEventsOfCurrentPage();
 
     function resetEvents() {
       if (!confirm('Sigur dorești să resetezi filtrele?')) {
@@ -286,7 +286,7 @@
       // Resetam pagina la 1 si actualizam paginarea
       currentPage = 1;
       generatePaginationLinks();
-      displayEvents();
+      displayEventsOfCurrentPage();
     }
 
     function faraDiacritice(str) {

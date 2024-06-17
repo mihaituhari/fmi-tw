@@ -111,28 +111,40 @@ console.log('\n🛠️Pregatire sistem (oferte, backup, etc):');
 /**
  * Stergere fisiere `/backup` vechi
  */
-const backupFolderPath = path.join(__dirname, 'backup', 'resurse', 'css');
+const backupFolderPath = path.join(__dirname, 'backup');
 const intervalStergereBackup = 30; // Minute
-function deleteOldBackupFiles() {
-  const files = fs.readdirSync(backupFolderPath);
-
-  // Exclude .gitignore
-  files.splice(files.indexOf('.gitignore'), 1);
+function deleteOldBackupFiles(folderPath) {
+  const files = fs.readdirSync(folderPath);
 
   files.forEach(file => {
-    const filePath = path.join(backupFolderPath, file);
+    // Skip the .gitignore file
+    if (file === '.gitignore') {
+      return;
+    }
+
+    const filePath = path.join(folderPath, file);
     const stats = fs.statSync(filePath);
     const now = Date.now();
-    const fileAgeInMinutes = (now - stats.mtime) / 1000 / 60;
 
-    if (fileAgeInMinutes > intervalStergereBackup) {
-      fs.unlinkSync(filePath);
-      console.log(` → ℹ️ [Backup][-] stergere backup/${file}`);
+    if (stats.isDirectory()) {
+      // If it's a directory, go inside and delete old backup files recursively
+      deleteOldBackupFiles(filePath);
+    } else {
+      // If it's a file, check if it's old and needs to be deleted
+      const fileAgeInMinutes = (now - stats.mtime) / 1000 / 60;
+
+      if (fileAgeInMinutes > intervalStergereBackup) {
+        fs.unlinkSync(filePath);
+        console.log(` → ℹ️ [Backup][-] stergere ${filePath}`);
+      }
     }
   });
 }
-deleteOldBackupFiles(); // Stergere initiala
-setInterval(deleteOldBackupFiles, intervalStergereBackup * 60 * 1000);
+
+deleteOldBackupFiles(backupFolderPath);
+setInterval(function() {
+  deleteOldBackupFiles(backupFolderPath);
+}, intervalStergereBackup * 60 * 1000);
 
 /**
  * Oferte.
@@ -148,10 +160,10 @@ function generateOffer() {
 
   // Generam oferta noua
   let oferta = {
-    "categorie": categorii[Math.floor(Math.random() * categorii.length)],
-    "reducere": reduceri[Math.floor(Math.random() * reduceri.length)],
-    "data-incepere": new Date().toISOString(),
-    "data-finalizare": new Date(Date.now() + intervalGenerareOferte * 60 * 1000).toISOString()
+    'categorie': categorii[Math.floor(Math.random() * categorii.length)],
+    'reducere': reduceri[Math.floor(Math.random() * reduceri.length)],
+    'data-incepere': new Date().toISOString(),
+    'data-finalizare': new Date(Date.now() + intervalGenerareOferte * 60 * 1000).toISOString(),
   };
 
   // Verificam sa nu aiba aceeasi categorie cu oferta anterioara
@@ -167,7 +179,7 @@ function generateOffer() {
   // Stergem ofertele expirate
   let now = new Date();
   oferte = oferte.filter(oferta => {
-    let endDate = new Date(oferta["data-finalizare"]);
+    let endDate = new Date(oferta['data-finalizare']);
     let expiredTime = (now - endDate) / 60000; // Convertim din milisecunde in minute
 
     console.log(` → ℹ️ [Oferte][-] stergere oferta pentru ${oferta.categorie} cu reducerea ${oferta.reducere}%`);
@@ -175,7 +187,7 @@ function generateOffer() {
     return expiredTime <= durataStergereOferteExpirate;
   });
 
-  fs.writeFileSync(ofertePath, JSON.stringify({"oferte": oferte}, null, 2));
+  fs.writeFileSync(ofertePath, JSON.stringify({'oferte': oferte}, null, 2));
 }
 
 generateOffer(); // Generare oferta initiala
@@ -185,7 +197,7 @@ function getCurrentOffer() {
   const oferte = JSON.parse(fs.readFileSync(ofertePath, 'utf8')).oferte;
 
   for (let oferta of oferte) {
-    let endDate = new Date(oferta["data-finalizare"]);
+    let endDate = new Date(oferta['data-finalizare']);
     let now = new Date();
 
     if (endDate > now) {
@@ -283,18 +295,19 @@ app.get(['/', '/index', '/home', '/*'], (req, res) => {
     pagina = req.path.substr(1); // Eliminam primul caracter (/)
   }
 
-  res.render(`pagini/${pagina}`, {ip: userIP, galleryImages: galleryImages, offer: offer}, function(err, rezultatRandare) {
-    if (!err) {
-      res.send(rezultatRandare);
-      return;
-    }
+  res.render(`pagini/${pagina}`, {ip: userIP, galleryImages: galleryImages, offer: offer},
+      function(err, rezultatRandare) {
+        if (!err) {
+          res.send(rezultatRandare);
+          return;
+        }
 
-    if (err.message.startsWith('Failed to lookup view')) { // Eroare 404
-      afisareEroare(obGlobal, res, 404);
-    } else { // Eroare generica
-      afisareEroare(obGlobal, res);
-    }
-  });
+        if (err.message.startsWith('Failed to lookup view')) { // Eroare 404
+          afisareEroare(obGlobal, res, 404);
+        } else { // Eroare generica
+          afisareEroare(obGlobal, res);
+        }
+      });
 });
 
 /**
