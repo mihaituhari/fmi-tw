@@ -199,8 +199,8 @@
       $('.pagination').empty();
 
       // Generam noile linkuri
-      let visibleArticles = $('.evenimente article[data-visible="1"]').length;
-      let totalPages = Math.ceil(visibleArticles / eventsPerPage);
+      let visibleEvents = $('.evenimente article[data-visible="1"]').length;
+      let totalPages = Math.ceil(visibleEvents / eventsPerPage);
 
       if (totalPages <= 1) {
         return;
